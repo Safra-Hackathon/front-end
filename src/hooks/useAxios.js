@@ -5,7 +5,7 @@ import { useHistory } from 'react-router-dom';
 import useJwtAuth from '@gabrielgvl/jwt_auth_react';
 import useNotistack from './useNotistack';
 import { LOGIN } from '../routes/pathNames';
-import useCache from '../store/useCache';
+import useCache from '../store/cache';
 
 const useAxiosHook = makeUseAxios({
   axios: axios.create({
@@ -22,12 +22,15 @@ const useAxiosHook = makeUseAxios({
  */
 
 const useAxios = (
-  url,
-  method,
-  entity,
-  manual,
-  config = {},
-  notification = true,
+  {
+    url,
+    method,
+    entity,
+    manual,
+    timer = 0,
+    config = {},
+    notification = true,
+  },
 ) => {
   const { successSnack, errorSnack } = useNotistack();
   const history = useHistory();
@@ -120,6 +123,14 @@ const useAxios = (
     handleNotifications();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [response, error]);
+
+  useEffect(() => {
+    if (timer) {
+      setInterval(() => {
+        execute();
+      }, timer);
+    }
+  }, [execute, timer]);
 
   return [{
     response, error, data: cachedData, loading,
