@@ -129,7 +129,7 @@ export const CardStyled = styled.div`
   }};
   width: ${(props) => (props.width ? `${props.width}px` : 'auto')};
   opacity: 0;
-  background: ${(props) => (props.new ? '#eee' : '#FFF')};
+  background: ${(props) => (props.opacity ? `rgba(255,255,255,${props.opacity})` : 'rgba(255,255,255,1)')};
   border: 1px solid #eee;
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);

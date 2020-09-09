@@ -28,7 +28,7 @@ Card.propTypes = {
   animated: PropTypes.bool,
   link: PropTypes.bool,
   noAlign: PropTypes.bool,
-  new: PropTypes.bool,
+  opacity: PropTypes.number,
   sidebar: PropTypes.bool,
   padding: PropTypes.string,
   sidebarColor: PropTypes.string,
