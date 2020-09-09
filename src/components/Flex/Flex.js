@@ -49,6 +49,28 @@ export const Flex = styled.div`
   background: ${(props) => (props.loginBg ? primary.rgb().toString() : 'transparent')};
 `;
 
+export const FlexImageBG = styled.div`{
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  position: absolute;
+  background-position: center center;
+  background-size: cover;
+  background-image: url(${(props) => props.backgroundImage});
+  &:after {
+    position: absolute;
+    zIndex: 3;
+    width: 100%;
+    height: 100%;
+    content: "";
+    display: block;
+    background: whitesmoke;
+    opacity: .3;
+  }
+  `;
+
 const responsive = css`
   width: 100%;
 
@@ -108,6 +130,7 @@ Flex.propTypes = {
   fullWidth: PropTypes.bool,
   column: PropTypes.bool,
   loginBg: PropTypes.bool,
+  backgroundImage: PropTypes.any,
   style: PropTypes.objectOf(React.CSSProperties),
   className: PropTypes.string,
   onClick: PropTypes.func,

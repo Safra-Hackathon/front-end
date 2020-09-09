@@ -6,6 +6,7 @@ import navigator from 'routes/navigator';
 
 import Flex from 'components/Flex';
 
+import { makeStyles } from '@material-ui/core/styles';
 import {
   Content, Menu, MenuItem, MenuIcon,
 } from './styles';

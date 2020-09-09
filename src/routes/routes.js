@@ -1,11 +1,11 @@
 // @material-ui/icons
 import * as pathNames from './pathNames';
-import { Flex } from '../components/Flex/Flex';
+import DashboardPage from '../pages/DashboardPage';
 
 const routes = [
   {
     path: pathNames.APP,
-    component: Flex,
+    component: DashboardPage,
     exact: true,
   },
 ];

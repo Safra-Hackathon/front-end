@@ -8,6 +8,7 @@ import Sidebar from 'containers/Sidebar';
 import SafraLogo from 'assets/images/bancoSafraLogo.png';
 import LogoImage from 'assets/images/bancoSafraIcon.png';
 
+import { makeStyles } from '@material-ui/core/styles';
 import ProfileMenu from './ProfileMenu';
 import NotificationMenu from './NotificationMenu';
 
@@ -17,16 +18,27 @@ import {
 import ProfilePic from './ProfilePic';
 import useSidebarStore from '../../store/sidebar';
 
+const useStyles = makeStyles((theme) => ({
+  appBar: {
+    zIndex: theme.zIndex.drawer + 1,
+  },
+  drawer: {
+    flexShrink: 0,
+  },
+}));
+
 const Header = () => {
   const [anchorEl, setAnchorEl] = useState(null);
   const [popover, setPopover] = useState(null);
   const { data: userEmail } = { data: {} }; // useAxios();
   const { data: dataNotification, loading } = { data: { totalNewNotifications: 0 } };
   const { mobileSideBarOpen, sidebarToggle } = useSidebarStore();
+  const { appBar, drawer } = useStyles();
 
   return (
-    <Container>
+    <Container position="fixed" className={appBar}>
       <SwipeableDrawer
+        className={drawer}
         open={mobileSideBarOpen}
         onClose={() => sidebarToggle(false)}
         onOpen={() => sidebarToggle(true)}

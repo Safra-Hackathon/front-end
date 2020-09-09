@@ -15,6 +15,7 @@
     "axios": "^0.20.0",
     "axios-hooks": "^1.9.0",
     "color": "^3.1.2",
+    "formik": "^2.1.5",
     "history": "^5.0.0",
     "lodash": "^4.17.20",
     "notistack": "^0.9.9",
@@ -25,7 +26,8 @@
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.3",
     "redux": "^4.0.5",
-    "styled-components": "^5.2.0"
+    "styled-components": "^5.2.0",
+    "yup": "^0.29.3"
   },
   "scripts": {
     "start": "react-scripts start cross-env LOGGER_LEVEL=info node server.js",
