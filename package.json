@@ -13,10 +13,16 @@
     "@testing-library/user-event": "^7.1.2",
     "axios": "^0.20.0",
     "axios-hooks": "^1.9.0",
+    "color": "^3.1.2",
+    "notistack": "^0.9.9",
+    "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-redux": "^7.2.1",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "3.4.3"
+    "react-scripts": "3.4.3",
+    "redux": "^4.0.5",
+    "styled-components": "^5.2.0"
   },
   "scripts": {
     "start": "react-scripts start cross-env LOGGER_LEVEL=info node server.js",
@@ -41,20 +47,23 @@
       "last 1 safari version"
     ]
   },
-    "devDependencies": {
-      "eslint": "^6.6.0",
-      "eslint-config-airbnb": "^18.2.0",
-      "eslint-plugin-import": "^2.22.0",
-      "eslint-plugin-jsx-a11y": "^6.3.1",
-      "eslint-plugin-react": "^7.20.6",
-      "eslint-plugin-react-hooks": "^4.1.0",
-      "eslint-config-prettier": "6.0.0",
-      "eslint-import-resolver-babel-module": "^5.0.1",
-      "eslint-import-resolver-typescript": "^1.1.1",
-      "eslint-plugin-prettier": "3.1.0",
-      "stylelint": "^9.10.1",
-      "stylelint-config-recommended": "^2.1.0",
-      "stylelint-config-styled-components": "^0.1.1",
-      "stylelint-processor-styled-components": "^1.6.0"
-    }
+  "devDependencies": {
+    "eslint": "^6.6.0",
+    "eslint-config-airbnb": "^18.2.0",
+    "eslint-config-prettier": "6.0.0",
+    "eslint-import-resolver-babel-module": "^5.0.1",
+    "eslint-import-resolver-typescript": "^1.1.1",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-jsx-a11y": "^6.3.1",
+    "eslint-plugin-prettier": "3.1.0",
+    "eslint-plugin-react": "^7.20.6",
+    "eslint-plugin-react-hooks": "^4.1.0",
+    "stylelint": "^9.10.1",
+    "stylelint-config-recommended": "^2.1.0",
+    "stylelint-config-styled-components": "^0.1.1",
+    "stylelint-processor-styled-components": "^1.6.0"
+  },
+  "optionalDependencies": {
+    "typescript": "3.5.3"
+  }
 }

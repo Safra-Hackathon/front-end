@@ -30,6 +30,8 @@
     "no-nested-ternary": "off",
     "import/named": "off",
     "no-alert": "off",
-    "no-console": "off"
+    "no-console": "off",
+    "react/jsx-props-no-spreading": "off",
+    "import/extensions": "off"
   }
 }
