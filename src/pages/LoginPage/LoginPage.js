@@ -3,13 +3,13 @@ import React from 'react';
 import Gate from 'containers/Gate';
 import LoginForm from './LoginForm';
 import { Avatar, AvatarIcon } from './styles';
+import Logo from '../../assets/images/safrapay_logo.png';
 
 const LoginPage = () => (
   <Gate>
     <Avatar new>
-      <AvatarIcon />
+      <AvatarIcon src={Logo} alt="Safra" />
     </Avatar>
-    <h1 className="page-title ml-0 text-dark">Entrar</h1>
     <LoginForm />
   </Gate>
 );

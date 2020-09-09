@@ -1,8 +1,5 @@
 import styled, { keyframes } from 'styled-components';
 
-import Lock from '@material-ui/icons/LockOpen';
-import { CardAvatar } from 'components/Card';
-
 const bounce = keyframes`
 0%, 100% {
     transform: translateY(0);
@@ -12,18 +9,15 @@ const bounce = keyframes`
   }
 `;
 
-export const Avatar = styled(CardAvatar)`
-  margin-top: -55px;
+export const Avatar = styled.div`
   align-self: center;
-  background: #c3c3c3;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-
+  padding-bottom: 20px;
   &:hover {
     animation: ${bounce} 0.5s linear infinite;
   }
 `;
 
-export const AvatarIcon = styled(Lock)`
+export const AvatarIcon = styled.img`
   color: #6b6a6a;
   font-size: 50px !important;
 `;
