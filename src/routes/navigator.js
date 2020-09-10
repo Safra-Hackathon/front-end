@@ -1,7 +1,6 @@
-import Home from '@material-ui/icons/Home';
-import Public from '@material-ui/icons/Public';
-import Poll from '@material-ui/icons/Poll';
-import Settings from '@material-ui/icons/Settings';
+import {
+  Home, Public, Settings, VideogameAssetSharp, StarOutlined, MonetizationOnOutlined,
+} from '@material-ui/icons';
 
 import * as pathNames from './pathNames';
 
@@ -20,19 +19,19 @@ const navigator = [
     icon: Public,
   },
   {
-    name: 'SafraPay Points',
-    path: pathNames.POINTS,
-    icon: Poll,
-  },
-  {
-    name: 'Desafios',
-    path: pathNames.CHALLENGES,
-    icon: Settings,
-  },
-  {
     name: 'Safra Payback',
     path: pathNames.PAYBACK,
-    icon: Settings,
+    icon: MonetizationOnOutlined,
+  },
+  {
+    name: 'SafraPay Points',
+    path: pathNames.POINTS,
+    icon: VideogameAssetSharp,
+  },
+  {
+    name: 'Conquistas',
+    path: pathNames.CHALLENGES,
+    icon: StarOutlined,
   },
 ];
 

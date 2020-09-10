@@ -8,7 +8,7 @@ const DashboardPage = () => (
   <Container>
     <h1 className="page-title p-page-title">Oi, Joao</h1>
     <Flex fullWidth justifyBetween>
-      <FlexColumn sm="100%" all="50%">
+      <FlexColumn noPadding sm="100%" all="50%">
         <FlexColumn all="100%">
           <WalletCard />
         </FlexColumn>
@@ -16,7 +16,7 @@ const DashboardPage = () => (
           <ChallengeCard />
         </FlexColumn>
       </FlexColumn>
-      <FlexColumn sm="100%" all="50%">
+      <FlexColumn noPadding sm="100%" all="50%">
         <FlexColumn all="100%">
           <TransactionCard />
         </FlexColumn>

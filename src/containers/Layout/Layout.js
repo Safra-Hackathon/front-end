@@ -6,6 +6,7 @@ import { Container, Content } from './styles';
 import useMobile from '../../hooks/useMobile';
 import Routes from '../../routes';
 import Sidebar from '../Sidebar';
+import BottomTabs from '../BottomTabs';
 
 const Layout = withRouter(({ location }) => {
   const isMobile = useMobile();
@@ -19,11 +20,14 @@ const Layout = withRouter(({ location }) => {
   }, [location.pathname]);
 
   return (
-    <Container>
-      {!isMobile && (
-      <Paper elevation={16}><Sidebar className="d-none-mobile" /></Paper>)}
-      <Content ref={ref}>{Routes}</Content>
-    </Container>
+    <>
+      <Container>
+        {!isMobile && (
+          <Paper elevation={16}><Sidebar className="d-none-mobile" /></Paper>)}
+        <Content ref={ref}>{Routes}</Content>
+      </Container>
+      {isMobile && (<BottomTabs />)}
+    </>
   );
 });
 
