@@ -5,7 +5,7 @@ import NotFound from '../components/NotFound';
 /**
  * Array de rotas Principais
  */
-export const indexRoutes = [
+const indexRoutes = [
   {
     redirect: true,
     from: pathNames.LOGIN,

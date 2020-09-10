@@ -1,7 +1,7 @@
 import * as pathNames from './pathNames';
 import LoginPage from '../pages/LoginPage';
 
-export const loginRoutes = [
+const loginRoutes = [
   {
     path: pathNames.APP,
     component: LoginPage,

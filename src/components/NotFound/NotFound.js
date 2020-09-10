@@ -19,10 +19,10 @@ const NotFound = withRouter(({ history }) => {
       column
       className="bg-primary"
     >
-      <Logo src={SafraLogo} alt="GigaCandanga Logo" className="d-none-md" />
+      <Logo src={SafraLogo} alt="Safra Logo" className="d-none-md" />
       <Logo
         src={SafraLogo}
-        alt="GigaCandanga Logo"
+        alt="Safra Logo"
         className="d-none-mobile"
         width="500px"
       />

@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import { Router } from 'react-router-dom';
+import { BrowserRouter, Router } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 import { MuiThemeProvider } from '@material-ui/core/styles';
 import { JwtAuthProvider } from '@gabrielgvl/jwt_auth_react';
@@ -12,10 +12,8 @@ import GlobalStyle from './styles/global';
 import { IndexRoutes } from './routes';
 import * as serviceWorker from './serviceWorker';
 
-const hist = createBrowserHistory();
-
 ReactDOM.render(
-  <Router history={hist}>
+  <BrowserRouter>
     <Provider store={store}>
       <JwtAuthProvider keyPrefix="@Safra-Payback">
         <MuiThemeProvider theme={theme}>
@@ -24,7 +22,7 @@ ReactDOM.render(
         </MuiThemeProvider>
       </JwtAuthProvider>
     </Provider>
-  </Router>,
+  </BrowserRouter>,
   document.getElementById('root'),
 );
 

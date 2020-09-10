@@ -1,9 +1,11 @@
 import React, { useRef, useEffect } from 'react';
 
 import { withRouter } from 'react-router-dom';
+import Paper from '@material-ui/core/Paper';
 import { Container, Content } from './styles';
 import useMobile from '../../hooks/useMobile';
 import Routes from '../../routes';
+import Sidebar from '../Sidebar';
 
 const Layout = withRouter(({ location }) => {
   const isMobile = useMobile();
@@ -18,7 +20,8 @@ const Layout = withRouter(({ location }) => {
 
   return (
     <Container>
-      {/* {!isMobile && <Sidebar className="d-none-mobile" />} */}
+      {!isMobile && (
+      <Paper elevation={16}><Sidebar className="d-none-mobile" /></Paper>)}
       <Content ref={ref}>{Routes}</Content>
     </Container>
   );

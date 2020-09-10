@@ -3,10 +3,10 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import { SnackbarProvider } from 'notistack';
 import { RouteWithSubRoutes } from './RoutesWithSubRoutes';
 import routes from './routes';
-import { loginRoutes } from './loginRoutes';
-import { indexRoutes } from './indexRoutes';
+import loginRoutes from './loginRoutes';
 import Loading from '../components/Loading';
 import SnackbarActions from '../components/Snackbar/SnackbarActions';
+import indexRoutes from './indexRoutes';
 
 /**
  * Router para renderizar páginas dentro do painel

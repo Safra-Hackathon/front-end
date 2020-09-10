@@ -9,26 +9,31 @@ import * as pathNames from './pathNames';
  * Array de navegação para o menu
  */
 const navigator = [
-  // {
-  //   name: 'Painel',
-  //   path: pathNames.DASHBOARD,
-  //   icon: Home,
-  // },
-  // {
-  //   name: 'Redes',
-  //   path: pathNames.NETWORKS,
-  //   icon: Public,
-  // },
-  // {
-  //   name: 'Estatísticas',
-  //   path: pathNames.ANALYTICS,
-  //   icon: Poll,
-  // },
-  // {
-  //   name: 'Configurações',
-  //   path: pathNames.SETTINGS,
-  //   icon: Settings,
-  // },
+  {
+    name: 'Início',
+    path: pathNames.DASHBOARD,
+    icon: Home,
+  },
+  {
+    name: 'Pagamentos',
+    path: pathNames.TRANSACTIONS,
+    icon: Public,
+  },
+  {
+    name: 'SafraPay Points',
+    path: pathNames.POINTS,
+    icon: Poll,
+  },
+  {
+    name: 'Desafios',
+    path: pathNames.CHALLENGES,
+    icon: Settings,
+  },
+  {
+    name: 'Safra Payback',
+    path: pathNames.PAYBACK,
+    icon: Settings,
+  },
 ];
 
 export default navigator;

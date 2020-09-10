@@ -4,7 +4,7 @@ import { tablet } from 'styles/queries';
 
 export const Container = styled.div`
   display: flex;
-  padding-top: 70px;
+  padding-top: 50px;
   padding-bottom: 50px;
 
   ${tablet} {
