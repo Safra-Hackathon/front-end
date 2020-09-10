@@ -1,8 +1,28 @@
 import React from 'react';
-import { Flex } from '../../components/Flex/Flex';
+import { Container, Flex, FlexColumn } from '../../components/Flex/Flex';
+import WalletCard from './Cards/WalletCard';
+import TransactionCard from './Cards/TransactionCard';
+import ChallengeCard from './Cards/ChallengeCard';
 
 const DashboardPage = () => (
-  <Flex>Teste</Flex>
+  <Container>
+    <h1 className="page-title p-page-title">Oi, Joao</h1>
+    <Flex fullWidth justifyBetween>
+      <FlexColumn sm="100%" all="50%">
+        <FlexColumn all="100%">
+          <WalletCard />
+        </FlexColumn>
+        <FlexColumn all="100%">
+          <ChallengeCard />
+        </FlexColumn>
+      </FlexColumn>
+      <FlexColumn sm="100%" all="50%">
+        <FlexColumn all="100%">
+          <TransactionCard />
+        </FlexColumn>
+      </FlexColumn>
+    </Flex>
+  </Container>
 );
 
 export default DashboardPage;

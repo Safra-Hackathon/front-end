@@ -11,7 +11,6 @@ export const Content = styled.aside`
 
 export const Menu = styled.ul`
   width: 100%;
-  padding-top: 50px;
 
   & a {
     text-decoration: none;

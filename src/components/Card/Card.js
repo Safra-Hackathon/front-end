@@ -35,8 +35,10 @@ Card.propTypes = {
   width: PropTypes.string,
   height: PropTypes.string,
   delay: PropTypes.number,
+  color: PropTypes.string,
 };
 
 Card.defaultProps = {
   delay: 50,
+  color: '#fff',
 };

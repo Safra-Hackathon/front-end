@@ -8,8 +8,8 @@ import blue from '@material-ui/core/colors/blue';
 import greenMui from '@material-ui/core/colors/green';
 import yellow from '@material-ui/core/colors/yellow';
 
-export const primary = Color('#374281');
-export const secondary = Color('#c3ae6c');
+export const primary = Color('#354582');
+export const secondary = Color('#DABF71');
 export const primaryLight = Color('#414c87');
 export const primaryDark = Color('#252e5b');
 

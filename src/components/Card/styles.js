@@ -1,5 +1,7 @@
 import styled, { css } from 'styled-components';
-import { darkText, darkText50, muiColors } from '../../styles/colors';
+import {
+  darkText, darkText50, muiColors, secondary,
+} from '../../styles/colors';
 import {
   desktop, desktopHd, phablet, tablet,
 } from '../../styles/queries';
@@ -11,7 +13,7 @@ const animatedCss = css`
 export const CardTitle = styled.h1`
   font-size: ${(props) => (props.staticFont ? '28px' : '18px')};
   font-weight: 300;
-  color: ${darkText.rgb().toString()};
+  color: ${secondary.rgb().toString()};
   margin-bottom: 5px;
   text-align: center;
 
@@ -48,6 +50,14 @@ export const CardSubTitle = styled.span`
   padding: 0 10px;
 `;
 
+export const CardText = styled.span`
+  font-size: 16px;
+  padding: 0 10px;
+  margin-top: 10px;
+  font-weight: bold;
+  color: ${(props) => (props.isValue ? 'inherit' : '#fff')}
+`;
+
 export const CardInfo = styled.div`
   display: flex;
   width: 100%;
@@ -56,15 +66,20 @@ export const CardInfo = styled.div`
 `;
 
 export const IconInfo = styled.div`
-  margin-left: 5px;
-  font-size: 16px;
+  padding: 15px;
+  margin-top: -20px;
+  margin-right: 15px;
+  float: right;
+  height: 4em;
+  width: 4em;
 `;
 
 export const CardDivider = styled.div`
   height: 1px;
   background: #eee;
   width: 100%;
-  margin: 20px 0;
+  margin: 5px 0;
+  background: ${secondary}
 `;
 
 export const CardActions = styled.div`
@@ -85,8 +100,14 @@ export const CardActions = styled.div`
   ${desktop} {
     width: 185px;
   }
+`;
 
-
+export const CardIcon = styled.div`
+  position: absolute;
+  top: 5;
+  right: 5;
+  text-align: end;
+  font-size: 2em;
 `;
 
 export const BackButton = styled.div`
@@ -116,7 +137,7 @@ export const CardAvatarStyled = styled.div`
 
 export const CardStyled = styled.div`
   position: relative;
-  color: ${darkText50.rgb().toString()};
+  color: ${secondary.rgb().toString()};
   padding: ${(props) => (props.padding ? props.padding : '15px 0')};
   min-height: ${(props) => {
     if (props.autoHeight) return 'auto';
@@ -129,7 +150,7 @@ export const CardStyled = styled.div`
   }};
   width: ${(props) => (props.width ? `${props.width}px` : 'auto')};
   opacity: 0;
-  background: ${(props) => (props.opacity ? `rgba(255,255,255,${props.opacity})` : 'rgba(255,255,255,1)')};
+  background: ${(props) => (props.opacity ? `rgba(255,255,255,${props.opacity})` : props.color)};
   border: 1px solid #eee;
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
@@ -146,7 +167,7 @@ export const CardStyled = styled.div`
   ${(props) => props.animated && animatedCss}
 
   &:hover {
-    background: ${(props) => (props.new ? '#bbb' : '#fff')};
+    ${(props) => (props.color === '#fff' ? `background: ${(props.new ? '#bbb' : '#fff')};` : '')}
   }
 
   ${(props) => props.sidebar
