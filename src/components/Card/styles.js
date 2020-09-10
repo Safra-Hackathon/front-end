@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 import {
-  darkText, darkText50, muiColors, secondary,
+  darkText, darkText50, muiColors, primary, secondary,
 } from '../../styles/colors';
 import {
   desktop, desktopHd, phablet, tablet,
@@ -65,6 +65,13 @@ export const CardInfo = styled.div`
   justify-content: space-around;
 `;
 
+export const CardHeader = styled.div`
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-around;
+`;
+
 export const IconInfo = styled.div`
   padding: 15px;
   margin-top: -20px;
@@ -83,22 +90,12 @@ export const CardDivider = styled.div`
 `;
 
 export const CardActions = styled.div`
-  position: relative;
-  top: 15px;
-  right: 15px;
-  width: 43%;
-    
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  
   ${phablet} {
-    position: absolute;
-    width: 30%;
-  }
-  
-  ${tablet} {
-    width: 20%;
-  }
-  
-  ${desktop} {
-    width: 185px;
+    top: 10px;
   }
 `;
 
@@ -112,8 +109,12 @@ export const CardIcon = styled.div`
 
 export const BackButton = styled.div`
   position: absolute;
-  top: 5px;
   left: 5px;
+  top: 0px;
+  
+  ${phablet} {
+    top: 10px;
+  }
 `;
 
 export const CardAvatarStyled = styled.div`
@@ -137,7 +138,7 @@ export const CardAvatarStyled = styled.div`
 
 export const CardStyled = styled.div`
   position: relative;
-  color: ${secondary.rgb().toString()};
+  color: ${(props) => (props.color === '#fff' ? darkText : secondary.rgb().toString())};
   padding: ${(props) => (props.padding ? props.padding : '15px 0')};
   min-height: ${(props) => {
     if (props.autoHeight) return 'auto';

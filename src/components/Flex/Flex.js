@@ -207,7 +207,6 @@ FlexColumn.propTypes = {
 export const Container = styled.div`
   width: 100%;
   flex: 1;
-  margin-top: 15px;
   color: ${darkText50.rgb().toString()};
 
   a {
@@ -217,6 +216,7 @@ export const Container = styled.div`
   
   ${queries.phablet} { 
     width: 85%;
+    margin-top: 15px;
   }
 `;
 
