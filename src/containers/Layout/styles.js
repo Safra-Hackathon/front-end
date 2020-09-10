@@ -20,8 +20,6 @@ export const Content = styled.main`
 
   flex: 1;
   height: 100%;
-  overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
 
-  padding-bottom: 55px;
 `;
