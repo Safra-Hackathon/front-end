@@ -5,3 +5,5 @@ export const handleShort = (rawName) => {
     : rawName.charAt(0);
   return name.toUpperCase();
 };
+
+export const toMoney = (money) => (`R$${money.toFixed(2)}`).replace('.', ',');

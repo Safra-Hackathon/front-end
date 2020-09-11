@@ -8,7 +8,7 @@ export const SaveButtonStyled = styled(Button)`
     
     ${phablet} {
         width: auto;
-        margin-top: auto;
+        margin-bottom: auto;
         margin-right: 10px;
    }
 `;

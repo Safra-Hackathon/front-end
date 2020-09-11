@@ -9,6 +9,7 @@ import { Flex, FlexColumn } from '../../../components/Flex/Flex';
 import FundsChart from '../../../components/FundsChart';
 import CompletionBar from '../../../components/CompletionBar';
 import PercentageSlider from '../../../components/PercentageSlider';
+import { toMoney } from '../../../utils/string';
 
 const initialFunds = [
   {
@@ -62,7 +63,7 @@ const FundsModal = ({ handleClose, isModalOpen }) => {
                       <PercentageSlider name={`funds.${i}.value`} valueLabelDisplay="auto" />
                     </FlexColumn>
                     <FlexColumn sm="20%" all="15%">
-                      <Typography variant="subtitle2" color="primary">{`R$${(f.value / 100) * 5000}`}</Typography>
+                      <Typography variant="subtitle2" color="primary">{toMoney((f.value / 100) * 5000)}</Typography>
                     </FlexColumn>
                   </Flex>
                 ))}
