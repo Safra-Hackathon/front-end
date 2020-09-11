@@ -2,6 +2,7 @@
 import * as pathNames from './pathNames';
 import { DashboardPage } from '../pages/DashboardPage';
 import SafraPaybackPage from '../pages/SafraPaybackPage';
+import InstitutionsPage from '../pages/InstitutionsPage';
 
 const routes = [
   {
@@ -12,6 +13,11 @@ const routes = [
   {
     path: pathNames.PAYBACK,
     component: SafraPaybackPage,
+    exact: true,
+  },
+  {
+    path: pathNames.INSTITUTIONS,
+    component: InstitutionsPage,
     exact: true,
   },
 ];

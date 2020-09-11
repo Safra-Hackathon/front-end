@@ -13,7 +13,7 @@ const animatedCss = css`
 export const CardTitle = styled.h1`
   font-size: ${(props) => (props.staticFont ? '28px' : '18px')};
   font-weight: 300;
-  color: ${secondary.rgb().toString()};
+  color: ${(props) => (props.black ? darkText : secondary.rgb().toString())};
   margin-bottom: 5px;
   text-align: center;
 
@@ -47,6 +47,12 @@ export const CardDetails = styled.h1`
 export const CardSubTitle = styled.span`
   font-size: 14px;
   text-align: center;
+  padding: 0 10px;
+`;
+
+export const CardDescription = styled.span`
+  font-size: 14px;
+  text-align: end;
   padding: 0 10px;
 `;
 

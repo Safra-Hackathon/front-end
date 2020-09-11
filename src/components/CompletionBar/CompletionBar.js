@@ -1,6 +1,5 @@
 import Typography from '@material-ui/core/Typography';
 import React from 'react';
-import LinearProgress from '@material-ui/core/LinearProgress';
 import PropTypes from 'prop-types';
 import { Flex } from '../Flex/Flex';
 import { StyledLinearProgress } from './styles';

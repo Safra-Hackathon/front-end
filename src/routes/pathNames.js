@@ -10,6 +10,8 @@ export const MENU = `${PREFIX}/menu`;
 
 export const TRANSACTIONS = `${PREFIX}/transactions`;
 
+export const INSTITUTIONS = `${PREFIX}/institutions`;
+
 export const POINTS = `${PREFIX}/points`;
 
 export const CHALLENGES = `${PREFIX}/challenges`;
