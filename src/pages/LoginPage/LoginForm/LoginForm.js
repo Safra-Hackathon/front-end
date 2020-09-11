@@ -3,7 +3,7 @@ import { Link, withRouter } from 'react-router-dom';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 
-import { TextField, Link as MuiLink } from '@material-ui/core';
+import { Link as MuiLink } from '@material-ui/core';
 import Flex from 'components/Flex';
 import ButtonProgress from 'components/ButtonProgress';
 import PasswordInput from 'components/PasswordInput';
@@ -21,7 +21,7 @@ const validationSchema = Yup.object().shape({
   passwd: Yup.string().required('Informe a senha'),
 });
 
-const LoginForm = ({ history }) => {
+const LoginForm = () => {
   const { handleLogin } = useJwtAuth();
   const [, login] = useLogin();
 

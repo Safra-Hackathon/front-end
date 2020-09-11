@@ -1,23 +1,19 @@
 import React from 'react';
-import { Container, FlexColumn } from '../../components/Flex';
+import { Container } from '../../components/Flex';
 import { Card } from '../../components/Card/Card';
 import {
-  CardDivider, CardHeader, CardInfo, CardTitle,
+  CardDivider, CardHeader, CardTitle,
 } from '../../components/Card/styles';
-import { CardAvatar, CardBackButton } from '../../components/Card';
 import { Flex } from '../../components/Flex/Flex';
-import CompletionBar from '../../components/CompletionBar';
-import AchievementsLine from '../../components/AchievementsLine';
-import QRPaymentPanel from '../../components/QRPaymentPanel';
 import EditableMaterialTable from '../../components/EditableMaterialTable';
 
-const line = [
-  { price: 'R$30,00', description: 'Carta de agradecimento' },
-  { price: 'R$150,00', description: 'Grip Crossfit Barigui' },
-  { price: 'R$487,00', description: 'Sua Doação Total', actual: true },
-  { price: 'R$500,00', description: 'Moletom Crossfit Barigui' },
-  { price: 'R$1000,00', description: 'Conversão de plano de horário light para horário livre' },
-];
+// const line = [
+//   { price: 'R$30,00', description: 'Carta de agradecimento' },
+//   { price: 'R$150,00', description: 'Grip Crossfit Barigui' },
+//   { price: 'R$487,00', description: 'Sua Doação Total', actual: true },
+//   { price: 'R$500,00', description: 'Moletom Crossfit Barigui' },
+//   { price: 'R$1000,00', description: 'Conversão de plano de horário light para horário livre' },
+// ];
 
 const InstitutionsPage = () => (
   <>

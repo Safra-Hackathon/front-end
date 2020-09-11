@@ -91,9 +91,9 @@ const SafraPaybackPage = () => {
                           {!isMobile && (
                           <FlexColumn all="50%">
                             <Flex justifyEnd fullWidth>
-                                  <SaveButton />
-                                  <FundsButton />
-                                </Flex>
+                              <SaveButton />
+                              <FundsButton />
+                            </Flex>
                           </FlexColumn>
                           )}
                         </Flex>

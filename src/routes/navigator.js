@@ -1,5 +1,5 @@
 import {
-  Home, Public, Domain, VideogameAssetSharp, StarOutlined, MonetizationOnOutlined,
+  Home, Public, VideogameAssetSharp, StarOutlined, MonetizationOnOutlined,
 } from '@material-ui/icons';
 
 import * as pathNames from './pathNames';

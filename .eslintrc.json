@@ -33,6 +33,7 @@
     "no-console": "off",
     "react/jsx-props-no-spreading": "off",
     "import/extensions": "off",
-    "import/no-named-as-default": "off"
+    "import/no-named-as-default": "off",
+    "import/no-cycle": "off"
   }
 }

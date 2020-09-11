@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Button, Typography } from '@material-ui/core';
 import { Formik } from 'formik';
 import Modal from '../../../components/Modal';
@@ -7,7 +7,6 @@ import {
 } from '../../../components/Card';
 import { Flex, FlexColumn } from '../../../components/Flex/Flex';
 import FundsChart from '../../../components/FundsChart';
-import CompletionBar from '../../../components/CompletionBar';
 import PercentageSlider from '../../../components/PercentageSlider';
 import { toMoney } from '../../../utils/string';
 

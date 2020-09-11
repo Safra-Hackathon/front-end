@@ -17,7 +17,6 @@ import ProfilePic from './ProfilePic';
 const Header = () => {
   const [anchorEl, setAnchorEl] = useState(null);
   const [popover, setPopover] = useState(null);
-  const { data: userEmail } = { data: {} }; // useAxios();
   const { data: dataNotification, loading } = { data: { totalNewNotifications: 0 } };
 
   return (

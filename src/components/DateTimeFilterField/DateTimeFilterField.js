@@ -58,13 +58,13 @@ const DateTimeFilterField = ({
   );
 };
 
-// DateTimeFilterField.propTypes = {
-//   start: PropTypes.object.isRequired,
-//   setStart: PropTypes.func.isRequired,
-//   end: PropTypes.object.isRequired,
-//   setEnd: PropTypes.func.isRequired,
-//   onDateChange: PropTypes.func.isRequired,
-//   loading: PropTypes.bool.isRequired,
-// };
+DateTimeFilterField.propTypes = {
+  start: PropTypes.object.isRequired,
+  setStart: PropTypes.func.isRequired,
+  end: PropTypes.object.isRequired,
+  setEnd: PropTypes.func.isRequired,
+  onDateChange: PropTypes.func.isRequired,
+  loading: PropTypes.bool.isRequired,
+};
 
 export default DateTimeFilterField;

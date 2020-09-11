@@ -1,9 +1,9 @@
 import styled, { css } from 'styled-components';
 import {
-  darkText, darkText50, muiColors, primary, secondary,
+  darkText, darkText50, muiColors, secondary,
 } from '../../styles/colors';
 import {
-  desktop, desktopHd, phablet, tablet,
+  desktop, desktopHd, phablet,
 } from '../../styles/queries';
 
 const animatedCss = css`

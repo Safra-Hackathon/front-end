@@ -2,7 +2,6 @@
 import * as pathNames from './pathNames';
 import { DashboardPage } from '../pages/DashboardPage';
 import SafraPaybackPage from '../pages/SafraPaybackPage';
-import InstitutionDetailPage from '../pages/InstitutionDetailPage';
 import InstitutionsPage from '../pages/InstitutionsPage';
 
 const routes = [

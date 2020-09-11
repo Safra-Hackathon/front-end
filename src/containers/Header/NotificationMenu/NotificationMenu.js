@@ -27,7 +27,7 @@ const NotificationMenu = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dataNotification]);
 
-  const handleClose = async (id = null, event = '') => {
+  const handleClose = async (id = null) => {
     setPopover(null);
     if (id) {
       // await updateNotification({
