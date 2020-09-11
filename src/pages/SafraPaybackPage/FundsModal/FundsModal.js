@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Button, Typography } from '@material-ui/core';
+import { Formik } from 'formik';
 import Modal from '../../../components/Modal';
 import {
   CardSubTitle, CardTitle,
@@ -24,11 +25,9 @@ const initialFunds = [
   },
   {
     label: 'Fundo C', value: 5,
-  },
-];
+  }];
 
 const FundsModal = ({ handleClose, isModalOpen }) => {
-  const [funds, setFunds] = useState(initialFunds);
   const modalActions = () => (
     <Flex justifyBetween fullWidth>
       <Button onClick={handleClose} variant="outlined" color="primary">Fechar</Button>
@@ -41,34 +40,39 @@ const FundsModal = ({ handleClose, isModalOpen }) => {
       actions={modalActions()}
       handleClose={handleClose}
       open={isModalOpen}
-      title="Fundos Disponíveis para aplicação"
-      size="sm"
+      title="Meus Fundos"
+      size="md"
     >
       <Flex alignCenter column>
         <CardTitle>
           R$5000,00
         </CardTitle>
         <CardSubTitle>Payback - Total</CardSubTitle>
-        <Flex alignCenter justifyBetween fullWidth className="mt-4">
-          <Flex fullWidth justifyBetween alignCenter>
-            {funds.map((f) => (
-              <Flex fullWidth alignCenter>
-                <FlexColumn sm="30%" all="20%">
-                  <Typography variant="subtitle2" color="primary">{f.label}</Typography>
-                </FlexColumn>
-                <FlexColumn sm="50%" all="70%">
-                  <PercentageSlider value={f.value} valueLabelDisplay="auto" />
-                </FlexColumn>
-                <FlexColumn sm="20%" all="10%">
-                  <Typography variant="subtitle2" color="primary">{`R$${(f.value / 100) * 5000}`}</Typography>
-                </FlexColumn>
+        <Formik
+          initialValues={{ funds: initialFunds }}
+          render={({ values }) => (
+            <Flex alignCenter justifyBetween fullWidth className="mt-4">
+              <Flex fullWidth justifyBetween alignCenter>
+                {values.funds.map((f, i) => (
+                  <Flex fullWidth alignCenter>
+                    <FlexColumn noPadding sm="30%" all="10%">
+                      <Typography variant="subtitle2" color="primary">{f.label}</Typography>
+                    </FlexColumn>
+                    <FlexColumn noPadding sm="50%" all="75%">
+                      <PercentageSlider name={`funds.${i}.value`} valueLabelDisplay="auto" />
+                    </FlexColumn>
+                    <FlexColumn sm="20%" all="15%">
+                      <Typography variant="subtitle2" color="primary">{`R$${(f.value / 100) * 5000}`}</Typography>
+                    </FlexColumn>
+                  </Flex>
+                ))}
               </Flex>
-            ))}
-          </Flex>
-          <Flex fullWidth justifyCenter>
-            <FundsChart funds={funds} />
-          </Flex>
-        </Flex>
+              <Flex fullWidth justifyCenter>
+                <FundsChart funds={values.funds} />
+              </Flex>
+            </Flex>
+          )}
+        />
       </Flex>
     </Modal>
   );

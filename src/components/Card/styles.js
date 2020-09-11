@@ -11,7 +11,7 @@ const animatedCss = css`
 `;
 
 export const CardTitle = styled.h1`
-  font-size: ${(props) => (props.staticFont ? '28px' : '18px')};
+  font-size: ${(props) => (props.staticFont ? '22px' : '18px')};
   font-weight: 300;
   color: ${(props) => (props.black ? darkText : secondary.rgb().toString())};
   margin-bottom: 5px;

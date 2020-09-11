@@ -8,6 +8,7 @@ import {
 } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import { useMobile } from '../../hooks';
+import { Title } from './styles';
 
 const Modal = ({
   open,
@@ -27,7 +28,7 @@ const Modal = ({
       maxWidth={size}
       fullWidth
     >
-      <DialogTitle>{title}</DialogTitle>
+      <Title>{title}</Title>
       <DialogContent>
         {title && <DialogContentText>{text}</DialogContentText>}
         {children}

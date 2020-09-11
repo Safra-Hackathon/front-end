@@ -24,9 +24,16 @@ const FundsChart = ({ funds }) => {
     <Flex fullWidth>
       <Radar
         redraw
-        height={isMobile ? '300px' : '200px'}
+        height={isMobile ? '300px' : '100px'}
         legend={{ display: false }}
         data={{ datasets: dataset, labels: funds.map((f) => f.label) }}
+        options={{
+          scale: {
+            ticks: {
+              min: 0,
+            },
+          },
+        }}
       />
     </Flex>
   );
