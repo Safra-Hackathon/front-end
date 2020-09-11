@@ -51,7 +51,8 @@ const FundsModal = ({ handleClose, isModalOpen }) => {
         <CardSubTitle>Payback - Total</CardSubTitle>
         <Formik
           initialValues={{ funds: initialFunds }}
-          render={({ values }) => (
+        >
+          {({ values }) => (
             <Flex alignCenter justifyBetween fullWidth className="mt-4">
               <Flex fullWidth justifyBetween alignCenter>
                 {values.funds.map((f, i) => (
@@ -73,7 +74,7 @@ const FundsModal = ({ handleClose, isModalOpen }) => {
               </Flex>
             </Flex>
           )}
-        />
+        </Formik>
       </Flex>
     </Modal>
   );

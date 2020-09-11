@@ -49,7 +49,8 @@ const SafraPaybackPage = () => {
           <Formik
             enableReinitialize
             initialValues={{ percentage: 50, isOn: false }}
-            render={({ handleSubmit, values }) => (
+          >
+            {({ handleSubmit, values }) => (
               <>
                 <CardHeader>
                   <CardBackButton path="/" />
@@ -90,9 +91,9 @@ const SafraPaybackPage = () => {
                           {!isMobile && (
                           <FlexColumn all="50%">
                             <Flex justifyEnd fullWidth>
-                              <SaveButton />
-                              <FundsButton />
-                            </Flex>
+                                  <SaveButton />
+                                  <FundsButton />
+                                </Flex>
                           </FlexColumn>
                           )}
                         </Flex>
@@ -115,7 +116,7 @@ const SafraPaybackPage = () => {
                 ) : (<ActivatePayback />)}
               </>
             )}
-          />
+          </Formik>
         </Card>
       </Container>
       <FundsModal handleClose={() => setModalOpen(false)} isModalOpen={isModalOpen} />

@@ -6,10 +6,11 @@ import useJwtAuth from '@gabrielgvl/jwt_auth_react';
 import useNotistack from './useNotistack';
 import { LOGIN } from '../routes/pathNames';
 import useCache from '../store/cache';
+import { link } from '../requests/util';
 
 const useAxiosHook = makeUseAxios({
   axios: axios.create({
-    baseURL: '/',
+    baseURL: `${link}`,
     // headers: { 'Cache-Control': 'no-cache' },
     // adapter: cacheAdapterEnhancer(axios.defaults.adapter, {
     //   enabledByDefault: false,
@@ -26,7 +27,7 @@ const useAxios = (
     url,
     method,
     entity,
-    manual,
+    manual = false,
     timer = 0,
     config = {},
     notification = true,
@@ -59,9 +60,9 @@ const useAxios = (
 
   useEffect(() => {
     if (!response || !response.config) return;
+    console.log(response);
     function handleNotifications() {
       if (notification) {
-        console.log(response);
         switch (response.status) {
           case 200:
             if (response.config.method === 'put') {

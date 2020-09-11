@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 
-import { TextField, IconButton } from '@material-ui/core';
+import { IconButton } from '@material-ui/core';
 import { Visibility, VisibilityOff } from '@material-ui/icons';
 import PropTypes from 'prop-types';
+import FormikTextField from '../FormikTextField';
 
 const PasswordInput = ({
   label, name, value, onChange, ...props
@@ -10,14 +11,12 @@ const PasswordInput = ({
   const [showPassword, setShowPassword] = useState(false);
 
   return (
-    <TextField
+    <FormikTextField
       label={label}
       name={name}
-      value={value}
       margin="normal"
       variant="standard"
       type={showPassword ? 'text' : 'password'}
-      onChange={onChange}
       InputProps={{
         endAdornment: (
           <IconButton style={{ padding: '0px' }} onClick={() => setShowPassword(!showPassword)}>

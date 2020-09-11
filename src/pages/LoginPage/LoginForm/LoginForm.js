@@ -3,13 +3,15 @@ import { Link, withRouter } from 'react-router-dom';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 
-import { TextField, Button, Link as MuiLink } from '@material-ui/core';
+import { TextField, Link as MuiLink } from '@material-ui/core';
 import Flex from 'components/Flex';
 import ButtonProgress from 'components/ButtonProgress';
 import PasswordInput from 'components/PasswordInput';
 
 import useJwtAuth from '@gabrielgvl/jwt_auth_react';
 import { Form } from './styles';
+import { useLogin } from '../../../requests/auth';
+import FormikTextField from '../../../components/FormikTextField';
 
 const validationSchema = Yup.object().shape({
   email: Yup.string()
@@ -21,7 +23,7 @@ const validationSchema = Yup.object().shape({
 
 const LoginForm = ({ history }) => {
   const { handleLogin } = useJwtAuth();
-  const [login] = [];// useAxios();
+  const [, login] = useLogin();
 
   useEffect(() => {
     localStorage.clear();
@@ -35,14 +37,11 @@ const LoginForm = ({ history }) => {
       }}
       onSubmit={async ({ email, passwd }, { setSubmitting }) => {
         try {
-          // const hashedPasswd = sha512(encodeURI(passwd));
-          const { data } = await login({ variables: { email, passwd } });
-          const { accessToken } = data.loginUser.loginResponse;
+          const { data } = await login({ data: { email, passwd } });
+          const { accessToken } = data;
           await handleLogin(accessToken);
         } catch (e) {
-          if (e.message.includes('Usuário não ativo')) {
-            history.push({ pathname: '/active', state: { email } });
-          }
+          console.log(e);
           setSubmitting(false);
         }
       }}
@@ -50,37 +49,22 @@ const LoginForm = ({ history }) => {
       validateOnBlur={false}
     >
       {({
-        values,
         handleSubmit,
-        handleChange,
-        handleBlur,
-        errors,
-        touched,
         isSubmitting,
       }) => (
         <Form onSubmit={handleSubmit}>
-          <TextField
-            label="CPF"
+          <FormikTextField
+            label="E-mail"
             name="email"
-            value={values.email}
             margin="normal"
             variant="standard"
             fullWidth
             type="email"
-            onChange={handleChange}
-            onBlur={handleBlur}
-            helperText={errors.email && touched.email ? errors.email : ''}
-            error={!!errors.email && !!touched.email}
           />
           <PasswordInput
             label=" Senha"
             name="passwd"
-            helperText={errors.passwd && touched.passwd ? errors.passwd : ''}
-            error={Boolean(errors.passwd) && Boolean(touched.passwd)}
             fullWidth
-            onChange={handleChange}
-            value={values.passwd}
-            onBlur={handleBlur}
           />
           <Flex fullWidth justifyEnd>
             <MuiLink color="primary" component={Link} to="/forgot-password">
