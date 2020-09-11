@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
 import { Button, Switch } from '@material-ui/core';
-import { CardContainer, Container, FlexColumn } from '../../components/Flex';
+import { Container } from '../../components/Flex';
 import { Card } from '../../components/Card/Card';
 import {
   CardActions, CardBackButton, CardDivider, CardInfo, CardSubTitle, CardTitle,
 } from '../../components/Card';
 import { Flex } from '../../components/Flex/Flex';
 import { CardHeader } from '../../components/Card/styles';
-import PercentageSlider from '../../components/PercentageSlider';
 import DateTimeFilterField from '../../components/DateTimeFilterField';
 import PaybackChart from '../../components/PaybackChart';
 import { useMobile } from '../../hooks';
 import FundsModal from './FundsModal';
+import PercentageSliderField from '../../components/PercentageSliderField';
 
 const SafraPaybackPage = () => {
   const [isModalOpen, setModalOpen] = useState(false);
@@ -47,7 +47,7 @@ const SafraPaybackPage = () => {
           <CardDivider />
           <Flex alignCenter justifyBetween fullWidth className="section mt-4">
             <Flex fullWidth>
-              <PercentageSlider />
+              <PercentageSliderField />
             </Flex>
             <Flex fullWidth justifyBetween alignCenter>
               <DateTimeFilterField />
@@ -55,6 +55,19 @@ const SafraPaybackPage = () => {
             </Flex>
             <Flex fullWidth justifyCenter>
               <PaybackChart />
+            </Flex>
+            <Flex fullWidth>
+              {isMobile && (
+              <Button
+                onClick={() => setModalOpen(true)}
+                className="mt-2"
+                style={{ width: '100%' }}
+                variant="contained"
+                color="primary"
+              >
+                Ver Fundos
+              </Button>
+              )}
             </Flex>
           </Flex>
         </Card>

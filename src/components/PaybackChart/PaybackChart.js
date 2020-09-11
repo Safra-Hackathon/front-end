@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Line } from 'react-chartjs-2';
 import { ptBR } from 'date-fns/locale';
 import addMonths from 'date-fns/addMonths';
 import { Flex } from '../Flex/Flex';
 import 'chartjs-adapter-date-fns';
-import { useMobile } from '../../hooks';
+import { useChartResponsiveUtils } from '../../hooks';
 import Loading from '../Loading';
 
 const generateDataset = (n) => {
@@ -18,8 +18,7 @@ const generateDataset = (n) => {
 };
 
 const PaybackChart = () => {
-  const [render, setRender] = useState(false);
-  const isMobile = useMobile();
+  const { render, isMobile } = useChartResponsiveUtils();
   const getDataset = () => [
     {
       fill: false,
@@ -46,14 +45,6 @@ const PaybackChart = () => {
       data: generateDataset(10),
     },
   ];
-
-  // Workaround to chart re-render when screen width changes
-  useEffect(() => {
-    setRender(false);
-    setTimeout(() => {
-      setRender(true);
-    }, 1000);
-  }, [isMobile]);
 
   if (!render) {
     return <Loading />;

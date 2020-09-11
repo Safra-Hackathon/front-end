@@ -13,7 +13,7 @@ const ChallengeItem = ({ value, labelId }) => (
       </ChallengeAvatar>
     </ListItemAvatar>
     <ItemProgress>
-      <CompletionBar value={value} />
+      <CompletionBar value={value} title={labelId} labelGenerator={(v) => `${v} pontos`} />
     </ItemProgress>
   </ListItem>
 );

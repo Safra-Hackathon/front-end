@@ -1,21 +1,31 @@
 import Typography from '@material-ui/core/Typography';
 import React from 'react';
 import LinearProgress from '@material-ui/core/LinearProgress';
-import { Flex, FlexColumn } from '../Flex/Flex';
+import PropTypes from 'prop-types';
+import { Flex } from '../Flex/Flex';
+import { StyledLinearProgress } from './styles';
 
-const CompletionBar = ({ value, props }) => (
-  <Flex alignEnd>
-    <FlexColumn noPadding style={{}} sm="70%" all="75%">
-      <Typography variant="subtitle2" color="primary">Titulo</Typography>
-      <Typography variant="subtitle2" color="secondary">Sub</Typography>
-      <LinearProgress variant="determinate" color="primary" value={value} {...props} />
-    </FlexColumn>
-    <FlexColumn sm="30%" all="25%">
-      <Typography variant="subtitle2" color="primary">
-        {`${value} pontos`}
-      </Typography>
-    </FlexColumn>
+const CompletionBar = ({
+  title, subTitle, labelGenerator, value, ...props
+}) => (
+  <Flex fullWidth alignCenter alignEnd>
+    <Flex fullWidth>
+      <Typography variant="subtitle2" color="primary">{title}</Typography>
+    </Flex>
+    <Flex fullWidth>
+      <Typography variant="subtitle2" color="secondary">{subTitle}</Typography>
+    </Flex>
+    <Flex fullWidth fullHeight>
+      <StyledLinearProgress variant="determinate" color="primary" value={value} {...props} />
+    </Flex>
   </Flex>
 );
+
+CompletionBar.propTypes = {
+  title: PropTypes.string.isRequired,
+  subTitle: PropTypes.string,
+  labelGenerator: PropTypes.func,
+  value: PropTypes.any.isRequired,
+};
 
 export default CompletionBar;
