@@ -23,11 +23,11 @@ const navigator = [
     path: pathNames.PAYBACK,
     icon: MonetizationOnOutlined,
   },
-  {
-    name: 'Instituições',
-    path: pathNames.INSTITUTIONS,
-    icon: Domain,
-  },
+  // {
+  //   name: 'Instituições',
+  //   path: pathNames.INSTITUTIONS,
+  //   icon: Domain,
+  // },
   {
     name: 'SafraPay Points',
     path: pathNames.POINTS,
