@@ -17,8 +17,12 @@ import PercentageSliderField from '../../components/PercentageSliderField';
 import OnOffSwitch from '../../components/OnOffSwitch';
 import { FundsButtonStyled, SaveButtonStyled } from './styles';
 import HelperModal from './HelperModal';
+import { useGetPayback, usePostPayback } from '../../requests/payback';
+import { paybackInitialValues } from '../../validation/payback';
 
 const SafraPaybackPage = () => {
+  const [{ data, loading }] = useGetPayback();
+  const [, post] = usePostPayback();
   const [isModalFundsOpen, setModalFundsOpen] = useState(false);
   const [isModalHelperOpen, setModalHelperOpen] = useState(false);
   const isMobile = useMobile();
@@ -49,8 +53,15 @@ const SafraPaybackPage = () => {
       <Container>
         <Card autoHeight>
           <Formik
+            onSubmit={async (values, { setSubmitting }) => {
+              try {
+                await post({ data: values });
+              } catch (e) {
+                setSubmitting(false);
+              }
+            }}
             enableReinitialize
-            initialValues={{ percentage: 50, isOn: false }}
+            initialValues={paybackInitialValues(data)}
           >
             {({ handleSubmit, values }) => (
               <>
@@ -61,12 +72,12 @@ const SafraPaybackPage = () => {
                       Safra Payback
                     </CardTitle>
                     <CardActions>
-                      <OnOffSwitch name="isOn" onCheck={() => setModalHelperOpen(true)} />
+                      <OnOffSwitch name="on" onCheck={() => setModalHelperOpen(true)} />
                     </CardActions>
                   </Flex>
                 </CardHeader>
                 <CardDivider />
-                {values.isOn ? (
+                {values.on ? (
                   <>
                     <CardInfo>
                       <Flex alignCenter column>
@@ -105,7 +116,7 @@ const SafraPaybackPage = () => {
                           </Flex>
                         )}
                         <Flex fullWidth justifyCenter>
-                          <PaybackChart />
+                          <PaybackChart loading={loading} />
                         </Flex>
                         {isMobile && (
                           <Flex fullWidth>

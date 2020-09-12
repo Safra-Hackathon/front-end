@@ -17,7 +17,7 @@ const generateDataset = (n) => {
   return data;
 };
 
-const PaybackChart = () => {
+const PaybackChart = ({ loading }) => {
   const { render, isMobile } = useChartResponsiveUtils();
   const getDataset = () => [
     {
@@ -46,7 +46,7 @@ const PaybackChart = () => {
     },
   ];
 
-  if (!render) {
+  if (!render || loading) {
     return <Loading />;
   }
 
