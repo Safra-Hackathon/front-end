@@ -1,8 +1,11 @@
 import React from 'react';
 import { Button, Typography } from '@material-ui/core';
 import { Formik } from 'formik';
+import Tooltip from '@material-ui/core/Tooltip';
+import { InfoOutlined } from '@material-ui/icons';
 import Modal from '../../../components/Modal';
 import {
+  CardDivider,
   CardSubTitle, CardTitle,
 } from '../../../components/Card';
 import { Flex, FlexColumn } from '../../../components/Flex/Flex';
@@ -43,45 +46,55 @@ const FundsModal = ({ handleClose, isModalOpen }) => {
       title="Meus Investimentos"
       size="md"
     >
-      <Flex alignCenter column>
-        <Formik
-          initialValues={{ payback: 5000, funds: initialFunds.filter((f) => f.min <= 5000) }}
-        >
-          {({ values }) => (
-            <>
-              <Flex alignCenter justifyAround fullWidth>
-                <Flex column justifyCenter alignCenter>
-                  <CardTitle>
-                    {toMoney(values.payback)}
-                  </CardTitle>
-                  <CardSubTitle>Payback - Total</CardSubTitle>
-                </Flex>
-                <Flex column justifyCenter alignCenter>
-                  <CardTitle>
-                    {toMoney(values.payback - values.funds.reduce((t, f) => t + f.money, 0))}
-                  </CardTitle>
-                  <CardSubTitle>Payback - Restante</CardSubTitle>
-                </Flex>
+      <Formik
+        initialValues={{ payback: 5000, funds: initialFunds.filter((f) => f.min <= 5000) }}
+      >
+        {({ values }) => (
+          <>
+            <Flex alignCenter justifyAround fullWidth>
+              <Flex column justifyCenter alignCenter>
+                <CardTitle>
+                  {toMoney(values.payback)}
+                </CardTitle>
+                <CardSubTitle>
+                  Payback - Atual
+                  <Tooltip placement="bottom" title="Total recebido de Payback.">
+                    <InfoOutlined />
+                  </Tooltip>
+                </CardSubTitle>
               </Flex>
-              <Flex alignCenter justifyBetween fullWidth className="mt-4">
-                <Flex fullWidth justifyBetween alignCenter>
-                  {values.funds.map((f, i) => (
-                    <Flex fullWidth alignCenter>
-                      <FlexColumn noPadding sm="30%" all="10%">
-                        <Typography variant="subtitle2" color="primary">{f.label}</Typography>
-                      </FlexColumn>
-                      <PercentageSliderMoneyTextField name={`funds.${i}`} fund={f} />
-                    </Flex>
-                  ))}
-                </Flex>
-                <Flex fullWidth justifyCenter>
-                  <FundsChart funds={values.funds} />
-                </Flex>
+              <Flex column justifyCenter alignCenter>
+                <CardTitle>
+                  {toMoney(values.payback - values.funds
+                    .filter((f) => f.money > f.min).reduce((t, f) => t + f.money, 0))}
+                </CardTitle>
+                <CardSubTitle>
+                  Payback - Restante
+                  <Tooltip placement="bottom" title="Caso não atinja o valor mínimo a ser investido, o dinheiro continuará em sua carteira.">
+                    <InfoOutlined />
+                  </Tooltip>
+                </CardSubTitle>
               </Flex>
-            </>
-          )}
-        </Formik>
-      </Flex>
+            </Flex>
+            <CardDivider />
+            <Flex alignCenter justifyBetween fullWidth className="mt-4">
+              <Flex fullWidth justifyBetween alignCenter>
+                {values.funds.map((f, i) => (
+                  <Flex fullWidth alignCenter>
+                    <FlexColumn noPadding sm="30%" all="10%">
+                      <Typography variant="subtitle2" color="primary">{f.label}</Typography>
+                    </FlexColumn>
+                    <PercentageSliderMoneyTextField name={`funds.${i}`} fund={f} />
+                  </Flex>
+                ))}
+              </Flex>
+              <Flex fullWidth justifyCenter>
+                <FundsChart funds={values.funds} />
+              </Flex>
+            </Flex>
+          </>
+        )}
+      </Formik>
     </Modal>
   );
 };

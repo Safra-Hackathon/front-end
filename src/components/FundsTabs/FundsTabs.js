@@ -25,67 +25,68 @@ const FundsTabs = ({ rows }) => {
     },
   ];
 
-  const getColumns = (isRecommended = false) => [{
-    title: 'Nome',
-    field: 'name',
-    cellStyle: {
-      backgroundColor: isRecommended ? muiColors.yellow : primary,
-      color: '#FFF',
+  const getColumns = (isRecommended = false) => [
+    {
+      title: 'Nome',
+      field: 'name',
+      cellStyle: {
+        backgroundColor: isRecommended ? muiColors.yellow : primary,
+        color: '#FFF',
+      },
+      headerStyle: {
+        color: primary,
+      },
+    }, {
+      title: 'Categoria',
+      field: 'category',
+      cellStyle: {
+        backgroundColor: isRecommended ? muiColors.yellow : secondary,
+        color: '#FFF',
+      },
+      headerStyle: {
+        color: primary,
+      },
+    }, {
+      title: 'Rentabilidade',
+      field: 'rentability',
+      cellStyle: {
+        backgroundColor: isRecommended ? muiColors.yellow : primary,
+        color: '#FFF',
+      },
+      headerStyle: {
+        color: primary,
+      },
+    }, {
+      title: 'Minimo Aplicado',
+      field: 'minApplied',
+      cellStyle: {
+        backgroundColor: isRecommended ? muiColors.yellow : primary,
+        color: '#FFF',
+      },
+      headerStyle: {
+        color: primary,
+      },
+    }, {
+      title: 'Taxa de Administracao',
+      field: 'adminTax',
+      cellStyle: {
+        backgroundColor: isRecommended ? muiColors.yellow : primary,
+        color: '#FFF',
+      },
+      headerStyle: {
+        color: primary,
+      },
+    }, {
+      title: 'Resgate',
+      field: 'retrive',
+      cellStyle: {
+        backgroundColor: isRecommended ? muiColors.yellow : secondary,
+        color: '#FFF',
+      },
+      headerStyle: {
+        color: primary,
+      },
     },
-    headerStyle: {
-      color: primary,
-    },
-  }, {
-    title: 'Categoria',
-    field: 'category',
-    cellStyle: {
-      backgroundColor: isRecommended ? muiColors.yellow : secondary,
-      color: '#FFF',
-    },
-    headerStyle: {
-      color: primary,
-    },
-  }, {
-    title: 'Rentabilidade',
-    field: 'rentability',
-    cellStyle: {
-      backgroundColor: isRecommended ? muiColors.yellow : primary,
-      color: '#FFF',
-    },
-    headerStyle: {
-      color: primary,
-    },
-  }, {
-    title: 'Minimo Aplicado',
-    field: 'minApplied',
-    cellStyle: {
-      backgroundColor: isRecommended ? muiColors.yellow : primary,
-      color: '#FFF',
-    },
-    headerStyle: {
-      color: primary,
-    },
-  }, {
-    title: 'Taxa de Administracao',
-    field: 'adminTax',
-    cellStyle: {
-      backgroundColor: isRecommended ? muiColors.yellow : primary,
-      color: '#FFF',
-    },
-    headerStyle: {
-      color: primary,
-    },
-  }, {
-    title: 'Resgate',
-    field: 'retrive',
-    cellStyle: {
-      backgroundColor: isRecommended ? muiColors.yellow : secondary,
-      color: '#FFF',
-    },
-    headerStyle: {
-      color: primary,
-    },
-  },
   ];
 
   return (
