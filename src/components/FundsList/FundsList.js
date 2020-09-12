@@ -7,7 +7,7 @@ const FundsList = () => (
   <List style={{ width: '100%', background: 'white', borderRadius: '20px' }}>
     {[10, 11, 22, 33].map((value, key, array) => (
       <>
-        <ChallengeItem value={value} />
+        <ChallengeItem value={value} title={value} />
         {key + 1 < array.length && <Divider />}
       </>
     ))}

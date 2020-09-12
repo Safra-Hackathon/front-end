@@ -54,7 +54,7 @@ const useAxios = (
     },
     {
       manual,
-      useCache: false,
+      useCache: true,
     },
   );
 

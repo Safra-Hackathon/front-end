@@ -54,7 +54,7 @@ const PaybackChart = ({ loading }) => {
     <Flex fullWidth>
       <Line
         redraw
-        height={isMobile ? '300px' : '100px'}
+        height={isMobile ? 300 : 100}
         data={{ datasets: getDataset() }}
         options={{
           scales: {

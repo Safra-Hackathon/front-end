@@ -19,6 +19,7 @@ import { FundsButtonStyled, SaveButtonStyled } from './styles';
 import HelperModal from './HelperModal';
 import { useGetPayback, usePostPayback } from '../../requests/payback';
 import { paybackInitialValues } from '../../validation/payback';
+import { toMoney } from '../../utils/string';
 
 const SafraPaybackPage = () => {
   const [{ data, loading }] = useGetPayback();
@@ -82,7 +83,7 @@ const SafraPaybackPage = () => {
                     <CardInfo>
                       <Flex alignCenter column>
                         <CardTitle>
-                          R$5000,00
+                          {toMoney(values.total)}
                         </CardTitle>
                         <CardSubTitle>Payback - Total</CardSubTitle>
                       </Flex>
@@ -99,7 +100,7 @@ const SafraPaybackPage = () => {
                         </Flex>
                         <Flex fullWidth justifyBetween alignCenter>
                           <FlexColumn noPadding sm="100%" all="50%">
-                            <DateTimeFilterField />
+                            <DateTimeFilterField loading={loading} />
                           </FlexColumn>
                           {!isMobile && (
                           <FlexColumn all="50%">

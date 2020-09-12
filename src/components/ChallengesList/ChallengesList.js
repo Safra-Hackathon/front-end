@@ -9,7 +9,7 @@ const ChallengesList = () => (
     <List style={{ width: '100%', background: 'white', borderRadius: '20px' }}>
       {[10, 11, 22, 33].map((value, key, array) => (
         <>
-          <ChallengeItem value={value} />
+          <ChallengeItem title={value} value={value} />
           {key + 1 < array.length && <Divider />}
         </>
       ))}

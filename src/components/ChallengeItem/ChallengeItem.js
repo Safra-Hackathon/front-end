@@ -5,7 +5,7 @@ import React from 'react';
 import CompletionBar from '../CompletionBar';
 import { ChallengeAvatar, ItemProgress } from './styles';
 
-const ChallengeItem = ({ value, labelId }) => (
+const ChallengeItem = ({ value, title }) => (
   <ListItem key={value} style={{ height: '100px' }}>
     <ListItemAvatar>
       <ChallengeAvatar>
@@ -13,7 +13,7 @@ const ChallengeItem = ({ value, labelId }) => (
       </ChallengeAvatar>
     </ListItemAvatar>
     <ItemProgress>
-      <CompletionBar value={value} title={labelId} labelGenerator={(v) => `${v} pontos`} />
+      <CompletionBar value={value} title={title} labelGenerator={(v) => `${v} pontos`} />
     </ItemProgress>
   </ListItem>
 );

@@ -80,7 +80,7 @@ const FundsModal = ({ handleClose, isModalOpen }) => {
             <Flex alignCenter justifyBetween fullWidth className="mt-4">
               <Flex fullWidth justifyBetween alignCenter>
                 {values.funds.map((f, i) => (
-                  <Flex fullWidth alignCenter>
+                  <Flex key={i} fullWidth alignCenter>
                     <FlexColumn noPadding sm="30%" all="10%">
                       <Typography variant="subtitle2" color="primary">{f.label}</Typography>
                     </FlexColumn>

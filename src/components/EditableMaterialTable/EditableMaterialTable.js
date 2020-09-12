@@ -16,7 +16,7 @@ const EditableMaterialTable = ({
     if (canShowAll && rows && rows instanceof Array) {
       setInternalData(rows.filter((r) => !r.deleted || showAll));
     }
-  }, [rows, showAll]);
+  }, [canShowAll, rows, showAll]);
 
   const onRowAdd = async (newData) => {
     try {

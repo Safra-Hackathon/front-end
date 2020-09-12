@@ -15,6 +15,7 @@ const PercentageSlider = ({ name, onChangeCommitted, ...props }) => {
     if (internalValue !== getIn(values, name)) {
       setInternalValue(getIn(values, name));
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [values]);
 
   return (

@@ -20,7 +20,7 @@ const ConfirmModal = ({
   );
 
   return (
-    <Modal handleClose={handleClose} {...props} actions={actions()}>
+    <Modal handleClose={handleClose} {...props} actions={actions()} size="sm">
       <Flex fullWidth>
         <Typography className="text-center" variant="body1">
           {text}
@@ -32,7 +32,9 @@ const ConfirmModal = ({
 
 ConfirmModal.propTypes = {
   onConfirm: PropTypes.func.isRequired,
-  ...Modal.propTypes,
+  confirmText: PropTypes.string,
+  handleClose: PropTypes.func.isRequired,
+  text: PropTypes.string,
 };
 
 export default ConfirmModal;
