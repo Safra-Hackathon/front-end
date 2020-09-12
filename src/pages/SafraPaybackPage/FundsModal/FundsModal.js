@@ -7,9 +7,7 @@ import {
 } from '../../../components/Card';
 import { Flex, FlexColumn } from '../../../components/Flex/Flex';
 import FundsChart from '../../../components/FundsChart';
-import PercentageSlider from '../../../components/PercentageSlider';
 import { toMoney } from '../../../utils/string';
-import { MinInvestmentLabel } from './styles';
 import PercentageSliderMoneyTextField from '../../../components/PercentageSliderMoneyTextField';
 
 const initialFunds = [

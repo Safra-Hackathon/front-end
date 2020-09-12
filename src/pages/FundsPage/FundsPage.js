@@ -1,37 +1,29 @@
 import React from 'react';
-import { Container } from '../../components/Flex';
-import { Card } from '../../components/Card/Card';
-import { CardDivider, CardHeader, CardTitle } from '../../components/Card/styles';
-import { Flex } from '../../components/Flex/Flex';
-import EditableMaterialTable from '../../components/EditableMaterialTable';
+import FundsTables from '../../components/FundsTable';
 
-const columns = [
-  { title: '', field: 'name' },
-  { title: 'Categoria', field: 'category' },
-  { title: 'Rentabilidade', field: 'rentability' },
-  { title: 'Aplicacao Minima', field: 'minApplied' },
-  { title: 'Taxa de Administracao', field: 'adminTax' },
-  { title: 'Resgate', field: 'retrive' },
+const rows = [
+  {
+    name: 'Fundo A', category: 'Renda Fixa', rentability: '1,90%', minApplied: 'R$1000,00', adminTax: '0,30%', retrive: 'D0', recommended: true,
+  },
+  {
+    name: 'Fundo B', category: 'Renda Fixa', rentability: '1,90%', minApplied: 'R$1000,00', adminTax: '0,90%', retrive: 'D+15', recommended: true,
+  },
+  {
+    name: 'Fundo C', category: 'Multimercado', rentability: '0,78%', minApplied: 'R$2500,00', adminTax: '2,5%', retrive: 'D+31', favorite: true,
+  },
+  {
+    name: 'Fundo A', category: 'Renda Fixa', rentability: '1,90%', minApplied: 'R$1000,00', adminTax: '0,30%', retrive: 'D0',
+  },
+  {
+    name: 'Fundo B', category: 'Renda Fixa', rentability: '1,90%', minApplied: 'R$1000,00', adminTax: '0,90%', retrive: 'D+15',
+  },
+  {
+    name: 'Fundo C', category: 'Multimercado', rentability: '0,78%', minApplied: 'R$2500,00', adminTax: '2,5%', retrive: 'D+31',
+  },
 ];
 
 const FundsPage = () => (
-  <>
-    <Container>
-      <Card autoHeight>
-        <CardHeader>
-          <Flex alignBaseline justifyBetween column>
-            <CardTitle black>
-              Fundos
-            </CardTitle>
-          </Flex>
-        </CardHeader>
-        <CardDivider />
-        <Flex justifyBetween fullWidth className="section mt-4">
-          <EditableMaterialTable columns={columns} />
-        </Flex>
-      </Card>
-    </Container>
-  </>
+  <FundsTables rows={rows} />
 );
 
 export default FundsPage;

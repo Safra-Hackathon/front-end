@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { muiColors, secondary } from '../../../styles/colors';
+import { muiColors, secondary } from '../../styles/colors';
 
 export const MinInvestmentLabel = styled.span`
     font-size: 0.75rem;

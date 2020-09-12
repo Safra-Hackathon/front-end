@@ -1,5 +1,4 @@
 import React from 'react';
-import './App.css';
 import useJwtAuth from '@gabrielgvl/jwt_auth_react';
 import Layout from './containers/Layout';
 import Header from './containers/Header';

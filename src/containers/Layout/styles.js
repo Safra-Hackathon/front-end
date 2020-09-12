@@ -20,6 +20,7 @@ export const Content = styled.main`
 
   flex: 1;
   height: 100%;
+  max-height: 100%;
   -webkit-overflow-scrolling: touch;
 
 `;

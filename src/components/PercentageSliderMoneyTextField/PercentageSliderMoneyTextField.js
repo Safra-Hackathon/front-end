@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { Flex, FlexColumn } from '../Flex/Flex';
 import PercentageSlider from '../PercentageSlider';
 import { toMoney } from '../../utils/string';
-import { MinInvestmentLabel } from '../../pages/SafraPaybackPage/FundsModal/styles';
+import { MinInvestmentLabel } from './styles';
 import MoneyTextField from '../MoneyTextField';
 import { useMobile } from '../../hooks';
 
@@ -66,6 +66,7 @@ const PercentageSliderMoneyTextField = ({ name, fund }) => {
 
 PercentageSliderMoneyTextField.propTypes = {
   name: PropTypes.string.isRequired,
+  fund: PropTypes.object.isRequired,
 };
 
 export default PercentageSliderMoneyTextField;

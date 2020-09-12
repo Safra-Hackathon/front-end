@@ -10,7 +10,7 @@ const HelperModal = ({ handleClose, isOpen }) => {
     </Flex>
   );
   return (
-    <Modal handleClose={handleClose} open={isOpen} size="sm" title="Sobre o Payback" actions={actions()}>
+    <Modal text="Investindo hoje, pensando no amanhã!" handleClose={handleClose} open={isOpen} size="sm" title="Sobre o Payback" actions={actions()}>
       O payback eh uma maneira para voce guardar dinheiro a cada transacao!
     </Modal>
   );

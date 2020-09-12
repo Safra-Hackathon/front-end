@@ -13,7 +13,7 @@ const EditableMaterialTable = ({
   const [internalData, setInternalData] = useState(rows);
 
   useEffect(() => {
-    if (rows && rows instanceof Array) {
+    if (canShowAll && rows && rows instanceof Array) {
       setInternalData(rows.filter((r) => !r.deleted || showAll));
     }
   }, [rows, showAll]);
@@ -64,7 +64,7 @@ const EditableMaterialTable = ({
   };
 
   const getActions = () => {
-    const generatedActions = actions || [];
+    const generatedActions = [...actions] || [];
     if (canShowAll) {
       generatedActions.push(
         {
@@ -128,9 +128,6 @@ const EditableMaterialTable = ({
         options={{
           actionsColumnIndex: -1,
           detailPanelColumnAlignment: 'left',
-          rowStyle: (rowData) => ({
-            backgroundColor: rowData.deleted ? 'lightgray' : '',
-          }),
           showTitle: false,
           ...options,
         }}

@@ -23,5 +23,6 @@ export const BR = {
   toolbar: {
     searchTooltip: 'Filtrar',
     searchPlaceholder: 'Filtrar',
+    nRowsSelected: '{0} investimento(s) selecionados',
   },
 };

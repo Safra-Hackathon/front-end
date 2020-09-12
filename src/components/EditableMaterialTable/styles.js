@@ -5,7 +5,7 @@ export const TableContainer = styled(Paper)`
   ${(props) => (props.fixedHeight ? 'height: 500px;' : '')}
   width: 100%;
   overflow-y: scroll;
-  font-weight: 400;
+  font-weight: 600;
   tr td:first-child.MuiTableCell-paddingNone {
     width: 100px;
   }
