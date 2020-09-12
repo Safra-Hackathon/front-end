@@ -1,11 +1,11 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Button } from '@material-ui/core';
+import { Button, Typography } from '@material-ui/core';
 import Modal from '../Modal';
 import { Flex } from '../Flex/Flex';
 
 const ConfirmModal = ({
-  onConfirm, confirmText, handleClose, ...props
+  onConfirm, confirmText, handleClose, text, ...props
 }) => {
   const handleConfirm = () => {
     onConfirm();
@@ -14,13 +14,19 @@ const ConfirmModal = ({
 
   const actions = () => (
     <Flex justifyBetween fullWidth>
-      <Button onClick={handleClose} variant="outlined" color="primary">Cancelar</Button>
-      <Button onClick={handleConfirm} variant="contained" color="primary">{confirmText}</Button>
+      <Button onClick={handleConfirm} variant="outlined" color="primary">{confirmText}</Button>
+      <Button onClick={handleClose} variant="contained" color="primary">Cancelar</Button>
     </Flex>
   );
 
   return (
-    <Modal handleClose={handleClose} {...props} actions={actions()} />
+    <Modal handleClose={handleClose} {...props} actions={actions()}>
+      <Flex fullWidth>
+        <Typography className="text-center" variant="body1">
+          {text}
+        </Typography>
+      </Flex>
+    </Modal>
   );
 };
 

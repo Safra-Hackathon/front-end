@@ -16,14 +16,16 @@ import FundsModal from './FundsModal';
 import PercentageSliderField from '../../components/PercentageSliderField';
 import OnOffSwitch from '../../components/OnOffSwitch';
 import { FundsButtonStyled, SaveButtonStyled } from './styles';
+import HelperModal from './HelperModal';
 
 const SafraPaybackPage = () => {
-  const [isModalOpen, setModalOpen] = useState(false);
+  const [isModalFundsOpen, setModalFundsOpen] = useState(false);
+  const [isModalHelperOpen, setModalHelperOpen] = useState(false);
   const isMobile = useMobile();
 
   const SaveButton = () => (<SaveButtonStyled type="submit" variant="contained" color="primary">Salvar</SaveButtonStyled>);
 
-  const FundsButton = () => (<FundsButtonStyled onClick={() => setModalOpen(true)} variant="contained" color="secondary">Ver Investimentos</FundsButtonStyled>);
+  const FundsButton = () => (<FundsButtonStyled onClick={() => setModalFundsOpen(true)} variant="contained" color="secondary">Ver Investimentos</FundsButtonStyled>);
 
   const ActivatePayback = () => (
     <Flex column fullWidth justifyCenter alignCenter className="mt-4">
@@ -59,7 +61,7 @@ const SafraPaybackPage = () => {
                       Safra Payback
                     </CardTitle>
                     <CardActions>
-                      <OnOffSwitch name="isOn" />
+                      <OnOffSwitch name="isOn" onCheck={() => setModalHelperOpen(true)} />
                     </CardActions>
                   </Flex>
                 </CardHeader>
@@ -119,7 +121,14 @@ const SafraPaybackPage = () => {
           </Formik>
         </Card>
       </Container>
-      <FundsModal handleClose={() => setModalOpen(false)} isModalOpen={isModalOpen} />
+      <FundsModal
+        handleClose={() => setModalFundsOpen(false)}
+        isModalOpen={isModalFundsOpen}
+      />
+      <HelperModal
+        handleClose={() => setModalHelperOpen(false)}
+        isOpen={isModalHelperOpen}
+      />
     </>
   );
 };

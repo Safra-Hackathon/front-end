@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 import { Flex, FlexColumn } from '../Flex/Flex';
 import { useMobile } from '../../hooks';
 import FormikTextField from '../FormikTextField';
-import MoneyTextField from '../MoneyTextField';
 
 const PercentageSlider = ({ name, onChangeCommitted, ...props }) => {
   const { values, setFieldValue, handleChange } = useFormikContext();
@@ -37,9 +36,8 @@ const PercentageSlider = ({ name, onChangeCommitted, ...props }) => {
           customOnBlur={(event) => {
             const { value } = event.target;
             const newValue = value > 100 ? 100 : value < 0 ? 0 : value;
-            onChangeCommitted(name, newValue, setFieldValue);
             setFieldValue(name, newValue);
-            onChangeCommitted(newValue);
+            if (onChangeCommitted) onChangeCommitted(newValue);
           }}
           inputProps={{ max: 100, min: 0 }}
         />
@@ -52,7 +50,7 @@ const PercentageSlider = ({ name, onChangeCommitted, ...props }) => {
           value={internalValue}
           onChange={((event, value) => setInternalValue(value))}
           onChangeCommitted={((event, value) => {
-            onChangeCommitted(value);
+            if (onChangeCommitted) onChangeCommitted(value);
             setFieldValue(name, value);
             handleChange(name);
           })}
@@ -70,6 +68,7 @@ const PercentageSlider = ({ name, onChangeCommitted, ...props }) => {
 
 PercentageSlider.propTypes = {
   name: PropTypes.string.isRequired,
+  onChangeCommitted: PropTypes.func,
 };
 
 export default PercentageSlider;

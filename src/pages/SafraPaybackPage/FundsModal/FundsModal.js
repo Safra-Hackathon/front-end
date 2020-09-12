@@ -46,29 +46,41 @@ const FundsModal = ({ handleClose, isModalOpen }) => {
       size="md"
     >
       <Flex alignCenter column>
-        <CardTitle>
-          R$5000,00
-        </CardTitle>
-        <CardSubTitle>Payback - Total</CardSubTitle>
         <Formik
           initialValues={{ payback: 5000, funds: initialFunds.filter((f) => f.min <= 5000) }}
         >
           {({ values }) => (
-            <Flex alignCenter justifyBetween fullWidth className="mt-4">
-              <Flex fullWidth justifyBetween alignCenter>
-                {values.funds.map((f, i) => (
-                  <Flex fullWidth alignCenter>
-                    <FlexColumn noPadding sm="30%" all="10%">
-                      <Typography variant="subtitle2" color="primary">{f.label}</Typography>
-                    </FlexColumn>
-                    <PercentageSliderMoneyTextField name={`funds.${i}`} fund={f} />
-                  </Flex>
-                ))}
+            <>
+              <Flex alignCenter justifyAround fullWidth>
+                <Flex column justifyCenter alignCenter>
+                  <CardTitle>
+                    {toMoney(values.payback)}
+                  </CardTitle>
+                  <CardSubTitle>Payback - Total</CardSubTitle>
+                </Flex>
+                <Flex column justifyCenter alignCenter>
+                  <CardTitle>
+                    {toMoney(values.payback - values.funds.reduce((t, f) => t + f.money, 0))}
+                  </CardTitle>
+                  <CardSubTitle>Payback - Restante</CardSubTitle>
+                </Flex>
               </Flex>
-              <Flex fullWidth justifyCenter>
-                <FundsChart funds={values.funds} />
+              <Flex alignCenter justifyBetween fullWidth className="mt-4">
+                <Flex fullWidth justifyBetween alignCenter>
+                  {values.funds.map((f, i) => (
+                    <Flex fullWidth alignCenter>
+                      <FlexColumn noPadding sm="30%" all="10%">
+                        <Typography variant="subtitle2" color="primary">{f.label}</Typography>
+                      </FlexColumn>
+                      <PercentageSliderMoneyTextField name={`funds.${i}`} fund={f} />
+                    </Flex>
+                  ))}
+                </Flex>
+                <Flex fullWidth justifyCenter>
+                  <FundsChart funds={values.funds} />
+                </Flex>
               </Flex>
-            </Flex>
+            </>
           )}
         </Formik>
       </Flex>

@@ -41,10 +41,10 @@ const PercentageSliderMoneyTextField = ({ name, fund }) => {
 
   return (
     <Flex fullWidth alignCenter>
-      <FlexColumn noPadding sm="50%" all="80%">
+      <FlexColumn noPadding sm="30%" all="80%">
         <PercentageSlider name={`${name}.percentage`} onChangeCommitted={updateSliderOnChange} valueLabelDisplay="auto" />
       </FlexColumn>
-      <FlexColumn sm="50%" all="20%" style={{ marginBottom: isMobile ? '-20px' : '-10px' }}>
+      <FlexColumn sm="70%" all="20%" style={{ marginBottom: isMobile ? '-20px' : '-10px' }}>
         <MoneyTextField
           fullWidth
           name={`${name}.money`}

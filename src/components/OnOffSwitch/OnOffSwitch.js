@@ -8,7 +8,7 @@ import { getIn, useFormikContext } from 'formik';
 import ConfirmModal from '../ConfirmModal';
 
 const OnOffSwitch = ({
-  name,
+  name, onCheck,
 }) => {
   const [confirmModal, setConfirmModal] = useState(false);
   const { values, setFieldValue, handleChange } = useFormikContext();
@@ -23,6 +23,7 @@ const OnOffSwitch = ({
     if (value) {
       setConfirmModal(true);
     } else {
+      onCheck();
       handleSwitchChange(!!event.target.checked);
     }
   };
@@ -35,6 +36,7 @@ const OnOffSwitch = ({
         control={<Switch onChange={handleSwitch} />}
       />
       <ConfirmModal
+        text="Nós estamos aqui para te apoiar a montar sua reserva. Caso tenha algum dúvida, nos colocamos à disposição para auxiliá-lo!"
         open={confirmModal}
         onConfirm={() => handleSwitchChange(false)}
         confirmText="SIM"
