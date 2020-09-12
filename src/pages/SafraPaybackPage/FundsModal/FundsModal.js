@@ -9,22 +9,24 @@ import { Flex, FlexColumn } from '../../../components/Flex/Flex';
 import FundsChart from '../../../components/FundsChart';
 import PercentageSlider from '../../../components/PercentageSlider';
 import { toMoney } from '../../../utils/string';
+import { MinInvestmentLabel } from './styles';
+import PercentageSliderMoneyTextField from '../../../components/PercentageSliderMoneyTextField';
 
 const initialFunds = [
   {
-    label: 'Fundo A', value: 20, min: 1000,
+    label: 'Fundo A', percentage: 0, min: 1000, money: 0,
   },
   {
-    label: 'Fundo A', value: 10, min: 20000,
+    label: 'Fundo A', percentage: 0, min: 20000, money: 0,
   },
   {
-    label: 'Apple', value: 15, min: 100,
+    label: 'Apple', percentage: 0, min: 100, money: 0,
   },
   {
-    label: 'Google', value: 30, min: 2000,
+    label: 'Google', percentage: 0, min: 2000, money: 0,
   },
   {
-    label: 'Fundo C', value: 5, min: 5000,
+    label: 'Fundo C', percentage: 0, min: 5000, money: 0,
   }];
 
 const FundsModal = ({ handleClose, isModalOpen }) => {
@@ -35,28 +37,12 @@ const FundsModal = ({ handleClose, isModalOpen }) => {
     </Flex>
   );
 
-  const updateSliderOnChange = (funds) => (name, change, setFieldValue) => {
-    const [n1, index, n2] = name.split('.');
-    const fundsCopy = funds
-      .map((f, i) => ({ ...f, index: i }))
-      .filter((f, i) => i !== parseInt(index, 10) && f.value > 0);
-
-    const total = fundsCopy.reduce((t, f) => f.value + t, parseInt(change, 10));
-    if (total - 100 <= 0) return;
-
-    fundsCopy.forEach((f) => {
-      const fundName = `${n1}.${f.index}.${n2}`;
-      const newValue = f.value * ((100 - change) / (total - change));
-      setFieldValue(fundName, newValue);
-    });
-  };
-
   return (
     <Modal
       actions={modalActions()}
       handleClose={handleClose}
       open={isModalOpen}
-      title="Meus Fundos"
+      title="Meus Investimentos"
       size="md"
     >
       <Flex alignCenter column>
@@ -65,7 +51,7 @@ const FundsModal = ({ handleClose, isModalOpen }) => {
         </CardTitle>
         <CardSubTitle>Payback - Total</CardSubTitle>
         <Formik
-          initialValues={{ funds: initialFunds.filter((f) => f.min <= 5000) }}
+          initialValues={{ payback: 5000, funds: initialFunds.filter((f) => f.min <= 5000) }}
         >
           {({ values }) => (
             <Flex alignCenter justifyBetween fullWidth className="mt-4">
@@ -75,16 +61,7 @@ const FundsModal = ({ handleClose, isModalOpen }) => {
                     <FlexColumn noPadding sm="30%" all="10%">
                       <Typography variant="subtitle2" color="primary">{f.label}</Typography>
                     </FlexColumn>
-                    <FlexColumn noPadding sm="50%" all="75%">
-                      <PercentageSlider name={`funds.${i}.value`} onChangeCommitted={updateSliderOnChange(values.funds)} valueLabelDisplay="auto" />
-                    </FlexColumn>
-                    <FlexColumn sm="20%" all="15%">
-                      <Typography variant="subtitle2" color="primary">{toMoney((f.value / 100) * 5000)}</Typography>
-                      <Typography variant="caption" color="secondary">
-                        Min:
-                        {toMoney(f.min)}
-                      </Typography>
-                    </FlexColumn>
+                    <PercentageSliderMoneyTextField name={`funds.${i}`} fund={f} />
                   </Flex>
                 ))}
               </Flex>

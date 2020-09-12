@@ -23,7 +23,7 @@ const SafraPaybackPage = () => {
 
   const SaveButton = () => (<SaveButtonStyled type="submit" variant="contained" color="primary">Salvar</SaveButtonStyled>);
 
-  const FundsButton = () => (<FundsButtonStyled onClick={() => setModalOpen(true)} variant="contained" color="secondary">Ver Fundos</FundsButtonStyled>);
+  const FundsButton = () => (<FundsButtonStyled onClick={() => setModalOpen(true)} variant="contained" color="secondary">Ver Investimentos</FundsButtonStyled>);
 
   const ActivatePayback = () => (
     <Flex column fullWidth justifyCenter alignCenter className="mt-4">

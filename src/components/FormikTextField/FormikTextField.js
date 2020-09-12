@@ -26,7 +26,7 @@ const FormikTextField = ({
       name={name}
       value={getIn(values, name)}
       onChange={customOnChange ? onChange : handleChange}
-      onBlur={customOnChange ? onBlur : handleBlur}
+      onBlur={customOnBlur ? onBlur : handleBlur}
       helperText={getIn(errors, name) && getIn(touched, name) ? getIn(errors, name) : ''}
       error={!!getIn(errors, name) && !!getIn(touched, name)}
       {...props}

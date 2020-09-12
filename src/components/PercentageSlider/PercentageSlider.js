@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import { Flex, FlexColumn } from '../Flex/Flex';
 import { useMobile } from '../../hooks';
 import FormikTextField from '../FormikTextField';
+import MoneyTextField from '../MoneyTextField';
 
 const PercentageSlider = ({ name, onChangeCommitted, ...props }) => {
   const { values, setFieldValue, handleChange } = useFormikContext();
@@ -27,6 +28,7 @@ const PercentageSlider = ({ name, onChangeCommitted, ...props }) => {
           margin="dense"
           variant="outlined"
           type="number"
+          color="secondary"
           customOnChange={((event) => {
             const { value } = event.target;
             setFieldValue(name, value);
@@ -37,6 +39,7 @@ const PercentageSlider = ({ name, onChangeCommitted, ...props }) => {
             const newValue = value > 100 ? 100 : value < 0 ? 0 : value;
             onChangeCommitted(name, newValue, setFieldValue);
             setFieldValue(name, newValue);
+            onChangeCommitted(newValue);
           }}
           inputProps={{ max: 100, min: 0 }}
         />
@@ -49,7 +52,7 @@ const PercentageSlider = ({ name, onChangeCommitted, ...props }) => {
           value={internalValue}
           onChange={((event, value) => setInternalValue(value))}
           onChangeCommitted={((event, value) => {
-            onChangeCommitted(name, value, setFieldValue);
+            onChangeCommitted(value);
             setFieldValue(name, value);
             handleChange(name);
           })}

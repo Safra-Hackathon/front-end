@@ -12,7 +12,7 @@ const FundsChart = ({ funds }) => {
     setDataset([{
       backgroundColor: 'rgba(255,0,0,0.4)',
       borderColor: 'rgba(255,0,0,0.4)',
-      data: funds.map((f) => f.value),
+      data: funds.map((f) => f.percentage),
     }]);
   }, [funds]);
 
