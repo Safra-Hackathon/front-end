@@ -8,7 +8,7 @@ export const DASHBOARD = `${PREFIX}/`;
 
 export const MENU = `${PREFIX}/menu`;
 
-export const TRANSACTIONS = `${PREFIX}/transactions`;
+export const FUNDS = `${PREFIX}/funds`;
 
 export const INSTITUTIONS = `${PREFIX}/institutions`;
 

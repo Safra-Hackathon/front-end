@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Slider from '@material-ui/core/Slider';
 import { getIn, useFormikContext } from 'formik';
 import PropTypes from 'prop-types';
@@ -6,14 +6,20 @@ import { Flex, FlexColumn } from '../Flex/Flex';
 import { useMobile } from '../../hooks';
 import FormikTextField from '../FormikTextField';
 
-const PercentageSlider = ({ name, ...props }) => {
+const PercentageSlider = ({ name, onChangeCommitted, ...props }) => {
   const { values, setFieldValue, handleChange } = useFormikContext();
   const isMobile = useMobile();
   const [internalValue, setInternalValue] = useState(getIn(values, name));
 
+  useEffect(() => {
+    if (internalValue !== getIn(values, name)) {
+      setInternalValue(getIn(values, name));
+    }
+  }, [values]);
+
   return (
     <Flex fullWidth justifyAround alignCenter>
-      <FlexColumn noPadding sm="100%" all="10%">
+      <FlexColumn noPadding sm="100%" all="15%">
         <FormikTextField
           fullWidth
           label="%"
@@ -28,19 +34,22 @@ const PercentageSlider = ({ name, ...props }) => {
           })}
           customOnBlur={(event) => {
             const { value } = event.target;
-            setFieldValue(name, value > 100 ? 100 : value < 0 ? 0 : value);
+            const newValue = value > 100 ? 100 : value < 0 ? 0 : value;
+            onChangeCommitted(name, newValue, setFieldValue);
+            setFieldValue(name, newValue);
           }}
           inputProps={{ max: 100, min: 0 }}
         />
       </FlexColumn>
       {!isMobile && (
-      <FlexColumn all="90%">
+      <FlexColumn all="85%">
         <Slider
           id={name}
           name={name}
           value={internalValue}
           onChange={((event, value) => setInternalValue(value))}
           onChangeCommitted={((event, value) => {
+            onChangeCommitted(name, value, setFieldValue);
             setFieldValue(name, value);
             handleChange(name);
           })}

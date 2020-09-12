@@ -1,5 +1,5 @@
 import {
-  Home, Public, VideogameAssetSharp, StarOutlined, MonetizationOnOutlined,
+  Home, Public, VideogameAssetSharp, StarOutlined, MonetizationOnOutlined, AccountBalanceOutlined,
 } from '@material-ui/icons';
 
 import * as pathNames from './pathNames';
@@ -14,9 +14,9 @@ const navigator = [
     icon: Home,
   },
   {
-    name: 'Pagamentos',
-    path: pathNames.TRANSACTIONS,
-    icon: Public,
+    name: 'Fundos',
+    path: pathNames.FUNDS,
+    icon: AccountBalanceOutlined,
   },
   {
     name: 'Safra Payback',

@@ -30,8 +30,8 @@ const PaybackChart = () => {
     },
     {
       fill: false,
-      backgroundColor: 'rgba(255,255,0,0.4)',
-      borderColor: 'rgba(255,255,0,0.4)',
+      backgroundColor: 'rgba(100,150,255,0.4)',
+      borderColor: 'rgba(100,155,255,0.4)',
       borderWidth: 2,
       label: 'Planejado',
       data: generateDataset(10),
