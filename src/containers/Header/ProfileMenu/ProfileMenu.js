@@ -35,8 +35,8 @@ const ProfileMenu = ({ anchorEl, setAnchorEl, history }) => {
 };
 
 ProfileMenu.propTypes = {
-  anchorEl: PropTypes.node.isRequired,
-  setAnchorEl: PropTypes.any.isRequired,
+  anchorEl: PropTypes.node,
+  setAnchorEl: PropTypes.any,
 };
 
 export default withRouter(ProfileMenu);

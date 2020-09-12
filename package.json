@@ -37,6 +37,9 @@
     "styled-components": "^5.2.0",
     "yup": "^0.29.3"
   },
+  "resolutions": {
+    "material-table/jspdf": "^2.1.0"
+  },
   "scripts": {
     "start": "react-scripts start cross-env LOGGER_LEVEL=info node server.js",
     "build": "react-scripts build",

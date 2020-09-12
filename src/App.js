@@ -8,7 +8,7 @@ import Login from './containers/Login';
 const App = () => {
   const { isLoggedIn } = useJwtAuth();
 
-  if (isLoggedIn) {
+  if (!isLoggedIn) {
     return <Login />;
   }
 

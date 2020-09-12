@@ -18,7 +18,7 @@ const validationSchema = Yup.object().shape({
     .email('E-mail inválido')
     .required('Informe o e-mail')
     .trim(),
-  passwd: Yup.string().required('Informe a senha'),
+  password: Yup.string().required('Informe a senha'),
 });
 
 const LoginForm = () => {
@@ -33,15 +33,16 @@ const LoginForm = () => {
     <Formik
       initialValues={{
         email: '',
-        passwd: '',
+        password: '',
       }}
-      onSubmit={async ({ email, passwd }, { setSubmitting }) => {
+      onSubmit={async ({ email, password }, { setSubmitting }) => {
         try {
-          const { data } = await login({ data: { email, passwd } });
-          const { accessToken } = data;
-          await handleLogin(accessToken);
+          const { data } = await login({ data: { email, password } });
+          const { token } = data;
+          if (token) {
+            await handleLogin(token);
+          }
         } catch (e) {
-          console.log(e);
           setSubmitting(false);
         }
       }}
@@ -62,8 +63,8 @@ const LoginForm = () => {
             type="email"
           />
           <PasswordInput
-            label=" Senha"
-            name="passwd"
+            label="Senha"
+            name="password"
             fullWidth
           />
           <Flex fullWidth justifyEnd>
@@ -71,7 +72,6 @@ const LoginForm = () => {
               Esqueceu sua senha?
             </MuiLink>
           </Flex>
-
           <Flex justifyBetween className="mt-4">
             <ButtonProgress
               type="submit"

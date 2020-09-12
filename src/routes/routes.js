@@ -1,8 +1,8 @@
 // @material-ui/icons
 import * as pathNames from './pathNames';
-import { DashboardPage } from '../pages/DashboardPage';
 import SafraPaybackPage from '../pages/SafraPaybackPage';
 import InstitutionsPage from '../pages/InstitutionsPage';
+import DashboardPage from '../pages/DashboardPage';
 
 const routes = [
   {

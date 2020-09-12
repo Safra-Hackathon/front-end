@@ -11,12 +11,12 @@ const FormikTextField = ({
   } = useFormikContext();
 
   const onBlur = (event) => {
-    if (customOnBlur) customOnBlur(event);
-    handleBlur(name);
+    customOnBlur(event);
+    handleChange(name);
   };
 
   const onChange = (event) => {
-    if (customOnChange) customOnChange(event);
+    customOnChange(event);
     handleChange(name);
   };
 
@@ -25,8 +25,8 @@ const FormikTextField = ({
       id={name}
       name={name}
       value={getIn(values, name)}
-      onChange={onChange}
-      onBlur={onBlur}
+      onChange={customOnChange ? onChange : handleChange}
+      onBlur={customOnChange ? onBlur : handleBlur}
       helperText={getIn(errors, name) && getIn(touched, name) ? getIn(errors, name) : ''}
       error={!!getIn(errors, name) && !!getIn(touched, name)}
       {...props}
@@ -36,6 +36,8 @@ const FormikTextField = ({
 
 FormikTextField.propTypes = {
   name: PropTypes.string.isRequired,
+  customOnBlur: PropTypes.func,
+  customOnChange: PropTypes.func,
 };
 
 export default FormikTextField;

@@ -83,10 +83,10 @@ const NotificationMenu = ({
   );
 };
 
-NotificationMenu.propTypes = {
-  popover: PropTypes.node.isRequired,
-  setPopover: PropTypes.func.isRequired,
-  dataNotification: PropTypes.object.isRequired,
-};
+// NotificationMenu.propTypes = {
+//   popover: PropTypes.node.isRequired,
+//   setPopover: PropTypes.func.isRequired,
+//   dataNotification: PropTypes.object.isRequired,
+// };
 
 export default NotificationMenu;
