@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Button } from '@material-ui/core';
-import { phablet } from '../../styles/queries';
+import { phablet } from '../../../styles/queries';
 
 export const SaveButtonStyled = styled(Button)`
     width: 100%;

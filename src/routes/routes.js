@@ -4,6 +4,7 @@ import SafraPaybackPage from '../pages/SafraPaybackPage';
 import InstitutionsPage from '../pages/InstitutionsPage';
 import DashboardPage from '../pages/DashboardPage';
 import FundsPage from '../pages/FundsPage';
+import InDevelopment from '../components/InDevelopment';
 
 const routes = [
   {
@@ -24,6 +25,16 @@ const routes = [
   {
     path: pathNames.FUNDS,
     component: FundsPage,
+    exact: true,
+  },
+  {
+    path: pathNames.CHALLENGES,
+    component: InDevelopment,
+    exact: true,
+  },
+  {
+    path: pathNames.POINTS,
+    component: InDevelopment,
     exact: true,
   },
 ];

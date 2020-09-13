@@ -1,27 +1,28 @@
 import React from 'react';
 
-import { KeyboardDateTimePicker, MuiPickersUtilsProvider } from '@material-ui/pickers';
+import { KeyboardDatePicker, MuiPickersUtilsProvider } from '@material-ui/pickers';
 import DateFnsUtils from '@date-io/date-fns';
 import brLocale from 'date-fns/locale/pt-BR';
 
 import Flex, { FlexColumn } from 'components/Flex';
-import PropTypes from 'prop-types';
 import useMobile from '../../hooks/useMobile';
+import { usePaybackContext } from '../../pages/SafraPaybackPage/PaybackProvider/PaybackProvider';
 
-const DateTimeFilterField = ({
-  start, setStart, end, setEnd, onDateChange, loading,
-}) => {
+const DateTimeFilterField = () => {
+  const {
+    setStartDate, startDate, setEndDate, endDate, loading, onDateChange,
+  } = usePaybackContext();
   const isMobile = useMobile();
   const getTimeFormat = () => (isMobile ? 'dd/MM/yy' : 'dd/MMMM/yyyy');
 
   const handleStartDateChange = async (value) => {
-    setStart(value);
-    await onDateChange(value, end);
+    setStartDate(value);
+    await onDateChange(value, endDate);
   };
 
   const handleEndDateChange = async (value) => {
-    setEnd(value);
-    await onDateChange(start, value);
+    setEndDate(value);
+    await onDateChange(startDate, value);
   };
 
   return (
@@ -29,25 +30,25 @@ const DateTimeFilterField = ({
       <Flex>
         <MuiPickersUtilsProvider utils={DateFnsUtils} locale={brLocale}>
           <FlexColumn all="50%">
-            <KeyboardDateTimePicker
+            <KeyboardDatePicker
               fullWidth
               label="Data Inicio"
               name="startDate"
               margin="normal"
-              format={getTimeFormat(start, end)}
-              value={start}
+              format={getTimeFormat(startDate, endDate)}
+              value={startDate}
               onChange={(value) => handleStartDateChange(value)}
               disabled={loading}
             />
           </FlexColumn>
           <FlexColumn all="50%">
-            <KeyboardDateTimePicker
+            <KeyboardDatePicker
               fullWidth
               label="Data Fim"
               name="endDate"
               margin="normal"
-              format={getTimeFormat(start, end)}
-              value={end}
+              format={getTimeFormat(startDate, endDate)}
+              value={endDate}
               onChange={(value) => handleEndDateChange(value)}
               disabled={loading}
             />
@@ -57,14 +58,5 @@ const DateTimeFilterField = ({
     </>
   );
 };
-
-// DateTimeFilterField.propTypes = {
-//   start: PropTypes.object.isRequired,
-//   setStart: PropTypes.func.isRequired,
-//   end: PropTypes.object.isRequired,
-//   setEnd: PropTypes.func.isRequired,
-//   onDateChange: PropTypes.func.isRequired,
-//   loading: PropTypes.bool.isRequired,
-// };
 
 export default DateTimeFilterField;

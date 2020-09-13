@@ -1,11 +1,13 @@
 import React from 'react';
 import { Line } from 'react-chartjs-2';
 import { ptBR } from 'date-fns/locale';
-import addMonths from 'date-fns/addMonths';
+import { addMonths } from 'date-fns';
 import { Flex } from '../Flex/Flex';
 import 'chartjs-adapter-date-fns';
 import { useChartResponsiveUtils } from '../../hooks';
 import Loading from '../Loading';
+import { usePaybackContext } from '../../pages/SafraPaybackPage/PaybackProvider/PaybackProvider';
+import { toMoney } from '../../utils/string';
 
 const generateDataset = (n) => {
   const data = [];
@@ -17,7 +19,11 @@ const generateDataset = (n) => {
   return data;
 };
 
-const PaybackChart = ({ loading }) => {
+const PaybackChart = () => {
+  const {
+    chartData, chartLoading, paybackLoading, startDate,
+    endDate,
+  } = usePaybackContext();
   const { render, isMobile } = useChartResponsiveUtils();
   const getDataset = () => [
     {
@@ -26,7 +32,7 @@ const PaybackChart = ({ loading }) => {
       borderColor: 'rgb(218,191,113)',
       borderWidth: 2,
       label: 'Historico',
-      data: generateDataset(10),
+      data: Object.entries(chartData).map((k, v) => ({ x: new Date(k), y: v })),
     },
     {
       fill: false,
@@ -47,7 +53,7 @@ const PaybackChart = ({ loading }) => {
     },
   ];
 
-  if (!render || loading) {
+  if (!render || chartLoading || paybackLoading || !chartData) {
     return <Loading />;
   }
 
@@ -58,6 +64,18 @@ const PaybackChart = ({ loading }) => {
         height={isMobile ? 300 : 100}
         data={{ datasets: getDataset() }}
         options={{
+          tooltips: {
+            callbacks: {
+              label(tooltipItem, data) {
+                let label = data.datasets[tooltipItem.datasetIndex].label || '';
+                if (label) {
+                  label += ': ';
+                }
+                label += toMoney(tooltipItem.yLabel);
+                return label;
+              },
+            },
+          },
           scales: {
             xAxes: [{
               type: 'time',
@@ -67,6 +85,8 @@ const PaybackChart = ({ loading }) => {
                 },
               },
               time: {
+                min: startDate,
+                max: endDate,
                 round: true,
                 unit: 'month',
                 tooltipFormat: 'dd/MM/yyyy',

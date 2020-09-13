@@ -1,7 +1,7 @@
 import { useAxios } from '../hooks';
-import { POST } from './util';
+import { link, POST } from './util';
 
-const URL = '/auth';
+const URL = `${link}/auth`;
 export const LOGIN_TYPE = 'Login';
 
 export const useLogin = () => useAxios({

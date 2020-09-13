@@ -12,6 +12,7 @@ import { Flex, FlexColumn } from '../../../components/Flex/Flex';
 import FundsChart from '../../../components/FundsChart';
 import { toMoney } from '../../../utils/string';
 import PercentageSliderMoneyTextField from '../../../components/PercentageSliderMoneyTextField';
+import { usePaybackContext } from '../PaybackProvider/PaybackProvider';
 
 const initialFunds = [
   {
@@ -30,19 +31,20 @@ const initialFunds = [
     label: 'Fundo C', percentage: 0, min: 5000, money: 0,
   }];
 
-const FundsModal = ({ handleClose, isModalOpen }) => {
+const FundsModal = () => {
+  const { handleCloseModalFunds, isModalFundsOpen } = usePaybackContext();
   const modalActions = () => (
     <Flex justifyBetween fullWidth>
-      <Button onClick={handleClose} variant="outlined" color="primary">Fechar</Button>
-      <Button onClick={handleClose} variant="contained" color="primary">Salvar</Button>
+      <Button onClick={handleCloseModalFunds} variant="outlined" color="primary">Fechar</Button>
+      <Button onClick={handleCloseModalFunds} variant="contained" color="primary">Salvar</Button>
     </Flex>
   );
 
   return (
     <Modal
       actions={modalActions()}
-      handleClose={handleClose}
-      open={isModalOpen}
+      handleClose={handleCloseModalFunds}
+      open={isModalFundsOpen}
       title="Meus Investimentos"
       size="md"
     >

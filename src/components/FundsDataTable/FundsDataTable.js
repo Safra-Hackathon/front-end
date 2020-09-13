@@ -1,9 +1,5 @@
 import React from 'react';
 import { FavoriteBorderOutlined, NotInterested } from '@material-ui/icons';
-import { Container, Flex } from '../Flex/Flex';
-import { Card } from '../Card/Card';
-import { CardHeader, CardTitle } from '../Card/styles';
-import FundsTabs from '../FundsTabs';
 import EditableMaterialTable from '../EditableMaterialTable';
 import { muiColors, primary, secondary } from '../../styles/colors';
 
