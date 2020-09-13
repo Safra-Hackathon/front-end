@@ -1,22 +1,25 @@
 import React from 'react';
-import { FavoriteBorderOutlined, NotInterested } from '@material-ui/icons';
+import { RemoveFromQueueOutlined, SaveAltOutlined } from '@material-ui/icons';
 import EditableMaterialTable from '../EditableMaterialTable';
-import { muiColors, primary, secondary } from '../../styles/colors';
+import { primary, secondary } from '../../styles/colors';
 
-const getActions = (isPayback = false) => [
-  {
-    tooltip: 'Remove All Selected Users',
-    icon: () => (isPayback ? <NotInterested /> : <FavoriteBorderOutlined />),
-    onClick: (evt, data) => alert(`You want to delete ${data.length} rows`),
-  },
-];
+const getActions = (isPayback = false, onAction) => {
+  if (!onAction) return [];
+  return [
+    {
+      tooltip: isPayback ? 'Remover dos Favoritos' : 'Adicionar aos Favoritos',
+      icon: () => (isPayback ? <RemoveFromQueueOutlined /> : <SaveAltOutlined />),
+      onClick: (evt, data) => onAction(data),
+    },
+  ];
+};
 
-const getColumns = (isRecommended = false) => [
+const getColumns = () => [
   {
     title: 'Nome',
     field: 'name',
     cellStyle: {
-      backgroundColor: isRecommended ? muiColors.yellow : primary,
+      backgroundColor: primary,
       color: '#FFF',
     },
     headerStyle: {
@@ -26,7 +29,7 @@ const getColumns = (isRecommended = false) => [
     title: 'Categoria',
     field: 'category',
     cellStyle: {
-      backgroundColor: isRecommended ? muiColors.yellow : secondary,
+      backgroundColor: secondary,
       color: '#FFF',
     },
     headerStyle: {
@@ -36,7 +39,7 @@ const getColumns = (isRecommended = false) => [
     title: 'Rentabilidade',
     field: 'rentability',
     cellStyle: {
-      backgroundColor: isRecommended ? muiColors.yellow : primary,
+      backgroundColor: primary,
       color: '#FFF',
     },
     headerStyle: {
@@ -46,7 +49,7 @@ const getColumns = (isRecommended = false) => [
     title: 'Minimo Aplicado',
     field: 'minApplied',
     cellStyle: {
-      backgroundColor: isRecommended ? muiColors.yellow : primary,
+      backgroundColor: primary,
       color: '#FFF',
     },
     headerStyle: {
@@ -56,7 +59,7 @@ const getColumns = (isRecommended = false) => [
     title: 'Taxa de Administracao',
     field: 'adminTax',
     cellStyle: {
-      backgroundColor: isRecommended ? muiColors.yellow : primary,
+      backgroundColor: primary,
       color: '#FFF',
     },
     headerStyle: {
@@ -66,7 +69,7 @@ const getColumns = (isRecommended = false) => [
     title: 'Resgate',
     field: 'retrive',
     cellStyle: {
-      backgroundColor: isRecommended ? muiColors.yellow : secondary,
+      backgroundColor: secondary,
       color: '#FFF',
     },
     headerStyle: {
@@ -76,13 +79,13 @@ const getColumns = (isRecommended = false) => [
 ];
 
 const FundsDataTable = ({
-  rows, selection, isRecommended, isFavorite,
+  rows, isFavorite, onAction,
 }) => (
   <EditableMaterialTable
     rows={rows}
-    columns={getColumns(isRecommended)}
-    actions={getActions(isFavorite)}
-    options={{ selection }}
+    columns={getColumns()}
+    actions={getActions(isFavorite, onAction)}
+    options={{ selection: true }}
   />
 );
 

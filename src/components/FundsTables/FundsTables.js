@@ -1,22 +1,43 @@
 import React from 'react';
-import { Container, Flex } from '../Flex/Flex';
-import { Card } from '../Card/Card';
-import { CardHeader, CardTitle } from '../Card/styles';
-import FundsTabs from '../FundsTabs';
+import { Flex } from '../Flex/Flex';
+import { TabContainer } from '../FundsTabs/styles';
+import FundsDataTable from '../FundsDataTable';
+import { usePostInvestment } from '../../requests/investments';
 
-const FundsTables = (props) => (
-  <Container>
-    <Card autoHeight>
-      <CardHeader>
-        <Flex alignBaseline justifyBetween column>
-          <CardTitle>
-            Fundos
-          </CardTitle>
+const FundsTables = ({ rows }) => {
+  const [, postInvestment] = usePostInvestment();
+
+  const handlePost = async (data) => {
+    try {
+      await postInvestment(data);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  return (
+    <>
+      <TabContainer value="all">
+        <Flex justifyBetween fullWidth className="section">
+          <FundsDataTable rows={rows} />
         </Flex>
-      </CardHeader>
-      <FundsTabs {...props} />
-    </Card>
-  </Container>
-);
+      </TabContainer>
+      <TabContainer value="recommended">
+        <Flex justifyBetween fullWidth className="section">
+          <FundsDataTable rows={rows.filter((r) => r.recommended)} />
+        </Flex>
+      </TabContainer>
+      <TabContainer value="favorite">
+        <Flex justifyBetween fullWidth className="section">
+          <FundsDataTable
+            rows={rows.filter((r) => r.favorite)}
+            isFavorite
+            onAction={handlePost}
+          />
+        </Flex>
+      </TabContainer>
+    </>
+  );
+};
 
 export default FundsTables;

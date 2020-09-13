@@ -1,5 +1,9 @@
 import React from 'react';
-import FundsTables from '../../components/FundsTables';
+import { Container } from '../../components/Flex';
+import { Card } from '../../components/Card/Card';
+import { CardHeader, CardTitle } from '../../components/Card/styles';
+import { Flex } from '../../components/Flex/Flex';
+import FundsTabs from '../../components/FundsTabs';
 
 const rows = [
   {
@@ -23,7 +27,18 @@ const rows = [
 ];
 
 const FundsPage = () => (
-  <FundsTables rows={rows} />
+  <Container>
+    <Card autoHeight>
+      <CardHeader>
+        <Flex alignBaseline justifyBetween column>
+          <CardTitle>
+            Fundos
+          </CardTitle>
+        </Flex>
+      </CardHeader>
+      <FundsTabs rows={rows} />
+    </Card>
+  </Container>
 );
 
 export default FundsPage;

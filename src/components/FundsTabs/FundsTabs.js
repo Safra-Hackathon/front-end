@@ -3,9 +3,7 @@ import TabContext from '@material-ui/lab/TabContext';
 import AppBar from '@material-ui/core/AppBar';
 import TabList from '@material-ui/lab/TabList';
 import Tab from '@material-ui/core/Tab';
-import { Flex } from '../Flex/Flex';
-import { TabContainer } from './styles';
-import FundsDataTable from '../FundsDataTable';
+import FundsTables from '../FundsTables';
 
 const FundsTabs = ({ rows }) => {
   const [tab, setTab] = useState('all');
@@ -19,24 +17,10 @@ const FundsTabs = ({ rows }) => {
         <TabList centered onChange={handleChange} aria-label="simple tabs example">
           <Tab label="Todos" value="all" />
           <Tab label="Recomendados" value="recommended" />
-          <Tab label="Payback" value="payback" />
+          <Tab label="Favoritos" value="favorite" />
         </TabList>
       </AppBar>
-      <TabContainer value="all">
-        <Flex justifyBetween fullWidth className="section">
-          <FundsDataTable rows={rows} selection />
-        </Flex>
-      </TabContainer>
-      <TabContainer value="recommended">
-        <Flex justifyBetween fullWidth className="section">
-          <FundsDataTable rows={rows.filter((r) => r.recommended)} isRecommended selection />
-        </Flex>
-      </TabContainer>
-      <TabContainer value="payback">
-        <Flex justifyBetween fullWidth className="section">
-          <FundsDataTable rows={rows.filter((r) => r.favorite)} isFavorite selection />
-        </Flex>
-      </TabContainer>
+      <FundsTables rows={rows} />
     </TabContext>
   );
 };
