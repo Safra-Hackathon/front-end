@@ -1,12 +1,12 @@
 import React from 'react';
 import EqualizerOutlinedIcon from '@material-ui/icons/EqualizerOutlined';
-import { Card } from '../../../../components/Card/Card';
+import { Card } from '../../../../../components/Card/Card';
 import {
   CardDivider, CardTitle,
-} from '../../../../components/Card';
-import { Flex } from '../../../../components/Flex/Flex';
-import { primary } from '../../../../styles/colors';
-import ChallengesList from '../../../../components/ChallengesList';
+} from '../../../../../components/Card';
+import { Flex } from '../../../../../components/Flex/Flex';
+import { primary } from '../../../../../styles/colors';
+import ChallengesList from '../../../../../components/ChallengesList';
 
 const ChallengeCard = () => (
   <Card autoHeight color={primary}>

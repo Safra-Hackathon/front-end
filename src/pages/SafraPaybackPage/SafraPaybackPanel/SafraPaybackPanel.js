@@ -23,11 +23,11 @@ import { usePaybackContext } from '../PaybackProvider/PaybackProvider';
 
 const SafraPaybackPanel = () => {
   const {
-    setModalFundsOpen, post, paybackData, setModalHelperOpen,
+    setModalFundsOpen, postPayback, paybackData, setModalHelperOpen,
   } = usePaybackContext();
   const isMobile = useMobile();
 
-  const SaveButton = () => (<SaveButtonStyled type="submit" variant="contained" color="primary">Salvar</SaveButtonStyled>);
+  const SaveButton = ({ isSubmitting }) => (<SaveButtonStyled disabled={isSubmitting} type="submit" variant="contained" color="primary">Salvar</SaveButtonStyled>);
 
   const FundsButton = () => (<FundsButtonStyled onClick={() => setModalFundsOpen(true)} variant="contained" color="secondary">Ver Investimentos</FundsButtonStyled>);
 
@@ -55,15 +55,16 @@ const SafraPaybackPanel = () => {
           <Formik
             onSubmit={async (values, { setSubmitting }) => {
               try {
-                await post({ data: values });
+                await postPayback({ data: values });
               } catch (e) {
+                console.log(e);
                 setSubmitting(false);
               }
             }}
             enableReinitialize
             initialValues={paybackInitialValues(paybackData)}
           >
-            {({ handleSubmit, values }) => (
+            {({ handleSubmit, values, isSubmitting }) => (
               <>
                 <CardHeader>
                   <CardBackButton path="/" />
@@ -104,7 +105,7 @@ const SafraPaybackPanel = () => {
                           {!isMobile && (
                           <FlexColumn all="50%">
                             <Flex justifyEnd fullWidth>
-                              <SaveButton />
+                              <SaveButton isSubmitting={isSubmitting} />
                               <FundsButton />
                             </Flex>
                           </FlexColumn>
@@ -112,7 +113,7 @@ const SafraPaybackPanel = () => {
                         </Flex>
                         {isMobile && (
                           <Flex fullWidth>
-                            <SaveButton />
+                            <SaveButton isSubmitting={isSubmitting} />
                           </Flex>
                         )}
                         <Flex fullWidth justifyCenter>

@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 import { Button } from '@material-ui/core';
 import { phablet } from '../../../styles/queries';
+import ButtonModalProgress from '../../../components/ButtonModalProgress';
 
-export const SaveButtonStyled = styled(Button)`
+export const SaveButtonStyled = styled(ButtonModalProgress)`
     width: 100%;
     margin-bottom: 20px;
     

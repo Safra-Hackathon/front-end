@@ -53,9 +53,9 @@ const useAxios = (
       if (notification) {
         switch (response.status) {
           case 200:
-            if (response.config.method === 'put') {
+            if (response.config.method === 'post') {
               successSnack(`${entity} Atualizado(a) com Sucesso!`);
-            } else if (response.config.method === 'delete') {
+            } if (response.config.method === 'delete') {
               successSnack(`${entity} Excluido(a) com Sucesso!`);
             }
             break;
@@ -89,22 +89,19 @@ const useAxios = (
     function handleCache() {
       // If cached data doesn't exist yet on post/put/delete
       const cData = cachedData || [];
-
-      switch (response.config.method) {
-        case 'get':
-          writeCache(entity, data);
-          break;
-        case 'post':
-          writeCache(entity, [...cData, data]);
-          break;
-        case 'put':
-          writeCache(entity, [...cData.filter((cd) => cd._id !== data._id), data]);
-          break;
-        case 'delete':
-          writeCache(entity, [...cData.filter((cd) => cd._id !== data._id)]);
-          break;
-        default:
-          console.log('Not Implemented');
+      if (cData instanceof Array) {
+        switch (response.config.method) {
+          case 'get':
+            writeCache(entity, data);
+            break;
+          case 'post':
+            writeCache(entity, [...cData, data]);
+            break;
+          default:
+            console.log('Not Implemented');
+        }
+      } else {
+        writeCache(entity, data);
       }
     }
 

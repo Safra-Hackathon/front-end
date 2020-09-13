@@ -11,7 +11,9 @@ export const usePostPayback = () => useAxios({
   url: URL, entity: PAYBACK_TYPE, method: POST, manual: true,
 });
 
-export const useGetPaybackHistory = () => useAxios({ url: `${URL}/history`, entity: PAYBACK_TYPE, method: GET });
+export const useGetPaybackHistory = () => useAxios({ url: `${URL}/history`, entity: `${PAYBACK_TYPE} History`, method: GET });
+
+export const useGetPaybackTransactions = () => useAxios({ url: `${URL}/transactions`, entity: `${PAYBACK_TYPE} Transaction`, method: GET });
 
 export const useGetPaybackHistoryChart = (startDate, endDate) => useAxios({
   url: `${URL}/history/chart/${startDate}/${endDate}`,

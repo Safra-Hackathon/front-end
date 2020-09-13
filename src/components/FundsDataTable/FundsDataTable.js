@@ -85,7 +85,7 @@ const FundsDataTable = ({
     rows={rows}
     columns={getColumns()}
     actions={getActions(isFavorite, onAction)}
-    options={{ selection: true }}
+    options={{ selection: !!onAction }}
   />
 );
 

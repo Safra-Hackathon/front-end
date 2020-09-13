@@ -3,7 +3,10 @@ import {
 } from '@material-ui/core';
 import TableCell from '@material-ui/core/TableCell';
 import React from 'react';
+import { format } from 'date-fns';
 import { TableWrapper } from './styles';
+import { paybackTransactionInitialValues } from '../../validation/payback';
+import { toMoney } from '../../utils/string';
 
 const LastTransactionsTable = ({ rows }) => (
   <TableWrapper component={Paper}>
@@ -16,13 +19,16 @@ const LastTransactionsTable = ({ rows }) => (
         </TableRow>
       </TableHead>
       <TableBody>
-        {rows.map((row) => (
-          <TableRow key={row.description}>
-            <TableCell>{row.description}</TableCell>
-            <TableCell align="right">{row.data}</TableCell>
-            <TableCell align="right">{row.value}</TableCell>
-          </TableRow>
-        ))}
+        {rows.map((row, index) => {
+          const mappedRow = paybackTransactionInitialValues(row);
+          return (
+            <TableRow key={index}>
+              <TableCell>{mappedRow.information}</TableCell>
+              <TableCell align="right">{format(mappedRow.data, 'dd/MM/yyyy')}</TableCell>
+              <TableCell align="right">{toMoney(mappedRow.amount)}</TableCell>
+            </TableRow>
+          );
+        })}
       </TableBody>
     </Table>
   </TableWrapper>

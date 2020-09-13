@@ -1,13 +1,13 @@
 import React from 'react';
 import MonetizationOnOutlinedIcon from '@material-ui/icons/MonetizationOnOutlined';
-import { FlexColumn } from '../../../../components/Flex';
-import { Card } from '../../../../components/Card/Card';
+import { FlexColumn } from '../../../../../components/Flex';
+import { Card } from '../../../../../components/Card/Card';
 import {
   CardDivider, CardTitle,
-} from '../../../../components/Card';
-import { Flex } from '../../../../components/Flex/Flex';
-import { primary } from '../../../../styles/colors';
-import { CardText } from '../../../../components/Card/styles';
+} from '../../../../../components/Card';
+import { Flex } from '../../../../../components/Flex/Flex';
+import { primary } from '../../../../../styles/colors';
+import { CardText } from '../../../../../components/Card/styles';
 
 const WalletCard = () => (
   <Card autoHeight color={primary}>
