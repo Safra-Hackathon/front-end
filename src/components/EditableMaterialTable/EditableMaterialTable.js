@@ -9,7 +9,7 @@ const EditableMaterialTable = ({
   <TableContainer>
     <MaterialTable
       {...props}
-      data={rows}
+      data={rows || []}
       localization={MaterialTableLocale.BR}
       options={{
         actionsColumnIndex: -1,

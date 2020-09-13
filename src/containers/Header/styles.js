@@ -8,7 +8,7 @@ export const Container = styled.header`
   background: ${primary.rgb().toString()};
   box-shadow: rgba(0, 0, 0, 0.15) 0px 1px 2px;
   width: 100%;
-  z-index: 10;
+  z-index: 1250;
   position: fixed;
 `;
 

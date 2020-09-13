@@ -15,4 +15,8 @@ const LoadingModal = ({ open }) => (
   </>
 );
 
+LoadingModal.defaultProps = {
+  open: false,
+};
+
 export default LoadingModal;

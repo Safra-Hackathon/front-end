@@ -2,40 +2,51 @@ import React from 'react';
 import { Flex } from '../Flex/Flex';
 import { TabContainer } from '../FundsTabs/styles';
 import FundsDataTable from '../FundsDataTable';
-import { usePostInvestment } from '../../requests/investments';
+import { useFundsContext } from '../../pages/FundsPage/FundsProvider/FundsProvider';
+import LoadingModal from '../LoadingModal';
 
-const FundsTables = ({ rows }) => {
-  const [, postInvestment] = usePostInvestment();
-
-  const handlePost = async (data) => {
-    try {
-      await postInvestment(data);
-    } catch (e) {
-      console.log(e);
-    }
-  };
-
+const FundsTables = () => {
+  const {
+    handlePostInvestment,
+    allFundsData,
+    recommendedFundsData,
+    favoritesData,
+    allFundsLoading,
+    recommendedFundsLoading,
+    favoritesLoading,
+    postFundsLoading,
+  } = useFundsContext();
   return (
     <>
       <TabContainer value="all">
         <Flex justifyBetween fullWidth className="section">
-          <FundsDataTable rows={rows} />
+          <FundsDataTable
+            rows={allFundsData}
+            loading={allFundsLoading}
+            onAction={handlePostInvestment}
+          />
         </Flex>
       </TabContainer>
       <TabContainer value="recommended">
         <Flex justifyBetween fullWidth className="section">
-          <FundsDataTable rows={rows.filter((r) => r.recommended)} />
+          <FundsDataTable
+            rows={recommendedFundsData ? [recommendedFundsData] : []}
+            loading={recommendedFundsLoading}
+            onAction={handlePostInvestment}
+          />
         </Flex>
       </TabContainer>
       <TabContainer value="favorite">
         <Flex justifyBetween fullWidth className="section">
           <FundsDataTable
-            rows={rows.filter((r) => r.favorite)}
+            rows={favoritesData ? favoritesData.investments : []}
             isFavorite
-            onAction={handlePost}
+            onAction={handlePostInvestment}
+            loading={favoritesLoading}
           />
         </Flex>
       </TabContainer>
+      <LoadingModal open={postFundsLoading} />
     </>
   );
 };

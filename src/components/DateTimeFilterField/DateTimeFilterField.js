@@ -3,6 +3,7 @@ import React from 'react';
 import { KeyboardDatePicker, MuiPickersUtilsProvider } from '@material-ui/pickers';
 import DateFnsUtils from '@date-io/date-fns';
 import brLocale from 'date-fns/locale/pt-BR';
+import { format } from 'date-fns';
 
 import Flex, { FlexColumn } from 'components/Flex';
 import useMobile from '../../hooks/useMobile';
@@ -16,12 +17,12 @@ const DateTimeFilterField = () => {
   const getTimeFormat = () => (isMobile ? 'dd/MM/yy' : 'dd/MMMM/yyyy');
 
   const handleStartDateChange = async (value) => {
-    setStartDate(value);
+    setStartDate(format(value, 'yyyy-MM-dd'));
     await onDateChange(value, endDate);
   };
 
   const handleEndDateChange = async (value) => {
-    setEndDate(value);
+    setEndDate(format(value, 'yyyy-MM-dd'));
     await onDateChange(startDate, value);
   };
 

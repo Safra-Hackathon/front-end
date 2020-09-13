@@ -31,8 +31,12 @@ const PaybackChart = () => {
       backgroundColor: 'rgb(218,191,113, 0.4)',
       borderColor: 'rgb(218,191,113)',
       borderWidth: 2,
-      label: 'Historico',
-      data: Object.entries(chartData).map((k, v) => ({ x: new Date(k), y: v })),
+      label: 'Histórico',
+      data: chartData.historico.map((h) => {
+        const [k, v] = Object.entries(h)[0];
+        const [year, month, day] = k.split('-');
+        return ({ x: new Date(year, month, day), y: v });
+      }),
     },
     {
       fill: false,
@@ -48,7 +52,7 @@ const PaybackChart = () => {
       backgroundColor: 'rgb(37,46,91, 0.8)',
       borderColor: 'rgb(37,46,91)',
       borderWidth: 2,
-      label: 'Projecao',
+      label: 'Projeção',
       data: generateDataset(10),
     },
   ];

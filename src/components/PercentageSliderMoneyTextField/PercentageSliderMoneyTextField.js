@@ -18,7 +18,7 @@ const PercentageSliderMoneyTextField = ({ name, fund }) => {
       .map((f, i) => ({ ...f, index: i }))
       .filter((f, i) => i !== parseInt(index, 10));
 
-    setFieldValue(`${n1}.${index}.money`, (change / 100) * values.payback);
+    setFieldValue(`${n1}.${index}.amount`, (change / 100) * values.payback);
 
     const total = fundsCopy.reduce((t, f) => f.percentage + t, parseInt(change, 10));
     if (total - 100 > 0) {
@@ -26,7 +26,7 @@ const PercentageSliderMoneyTextField = ({ name, fund }) => {
         const newValue = f.percentage * ((100 - change) / (total - change));
         const fundName = `${n1}.${f.index}`;
         setFieldValue(`${fundName}.percentage`, newValue);
-        setFieldValue(`${fundName}.money`, (newValue / 100) * values.payback);
+        setFieldValue(`${fundName}.amount`, (newValue / 100) * values.payback);
       });
     }
   };
@@ -35,7 +35,7 @@ const PercentageSliderMoneyTextField = ({ name, fund }) => {
     const { value } = event.target;
     const newValue = value > values.payback ? values.payback : value < 0 ? 0 : value;
     setFieldValue(`${name}.percentage`, (newValue / values.payback) * 100);
-    setFieldValue(`${name}.money`, newValue);
+    setFieldValue(`${name}.amount`, newValue);
     updateSliderOnChange((newValue / values.payback) * 100);
   };
 
@@ -47,7 +47,7 @@ const PercentageSliderMoneyTextField = ({ name, fund }) => {
       <FlexColumn sm="70%" all="20%" styles={{ marginBottom: isMobile ? '-20px' : '-10px' }}>
         <MoneyTextField
           fullWidth
-          name={`${name}.money`}
+          name={`${name}.amount`}
           variant="outlined"
           margin="dense"
           label="$"
