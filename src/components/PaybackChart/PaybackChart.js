@@ -1,7 +1,6 @@
 import React from 'react';
 import { Line } from 'react-chartjs-2';
 import { ptBR } from 'date-fns/locale';
-import { addMonths } from 'date-fns';
 import { Flex } from '../Flex/Flex';
 import 'chartjs-adapter-date-fns';
 import { useChartResponsiveUtils } from '../../hooks';

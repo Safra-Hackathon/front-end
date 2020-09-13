@@ -24,7 +24,12 @@ const FundsChart = ({ funds }) => {
   }
 
   if (funds.length < 3) {
-    return <Typography variant="h6">Adicione investimentos para visualizar o gráfico!</Typography>;
+    return (
+      <Flex column justifyCenter>
+        <Typography variant="h6">Adicione investimentos para visualizar o gráfico!</Typography>
+        <Typography variant="subtitle1">Fundos que voce nao possui saldo suficiente para investir nao aparecerao aqui!</Typography>
+      </Flex>
+    );
   }
 
   return (

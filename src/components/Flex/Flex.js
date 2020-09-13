@@ -162,6 +162,8 @@ export const FlexColumn = styled.div`
   }};
   }
 
+  ${(props) => (props.marginBottom ? `margin-bottom:${props.marginBottom};` : '')}
+  
   padding: ${(props) => (props.noPadding ? 0 : '15px')};
 
   ${queries.tablet} {

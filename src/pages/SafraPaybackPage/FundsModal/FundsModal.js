@@ -13,12 +13,13 @@ import FundsChart from '../../../components/FundsChart';
 import { toMoney } from '../../../utils/string';
 import PercentageSliderMoneyTextField from '../../../components/PercentageSliderMoneyTextField';
 import { usePaybackContext } from '../PaybackProvider/PaybackProvider';
-import { investmentInitialValues } from '../../../validation/investment';
+import { investmentsInitialValues } from '../../../validation/investment';
 import ButtonModalProgress from '../../../components/ButtonModalProgress';
 
 const FundsModal = () => {
   const {
-    handleCloseModalFunds, isModalFundsOpen, investmentsData, investmentsLoading, postInvestment, paybackData,
+    handleCloseModalFunds, isModalFundsOpen, investmentsData,
+    investmentsLoading, postInvestment, paybackData,
   } = usePaybackContext();
   const modalActions = (isSubmitting, handleSubmit) => (
     <Flex justifyBetween fullWidth>
@@ -58,11 +59,7 @@ const FundsModal = () => {
         }
       }}
       enableReinitialize
-      initialValues={{
-        payback: parseFloat(paybackData.total),
-        funds: investmentsData.investments ? investmentsData.investments
-          .map((f) => investmentInitialValues(f)).filter((f) => f.min <= paybackData.total) : [],
-      }}
+      initialValues={investmentsInitialValues(investmentsData)}
     >
       {({ values, isSubmitting, handleSubmit }) => (
         <Form onSubmit={handleSubmit}>
@@ -77,7 +74,7 @@ const FundsModal = () => {
               <Flex alignCenter justifyAround fullWidth>
                 <Flex column justifyCenter alignCenter>
                   <CardTitle>
-                    {toMoney(values.payback)}
+                    {toMoney(values.available)}
                   </CardTitle>
                   <CardSubTitle>
                     Payback - Atual
@@ -88,7 +85,7 @@ const FundsModal = () => {
                 </Flex>
                 <Flex column justifyCenter alignCenter>
                   <CardTitle>
-                    {toMoney(values.payback - values.funds
+                    {toMoney(values.available - values.funds
                       .filter((f) => f.amount > f.min).reduce((t, f) => t + f.amount, 0))}
                   </CardTitle>
                   <CardSubTitle>
@@ -106,8 +103,8 @@ const FundsModal = () => {
                 </Flex>
                 <Flex fullWidth justifyBetween alignCenter>
                   {values.funds.map((f, i) => (
-                    <Flex key={i} fullWidth alignCenter>
-                      <FlexColumn noPadding sm="30%" all="10%">
+                    <Flex key={i} fullWidth alignCenter className="mt-2">
+                      <FlexColumn noPadding all="100%">
                         <Typography variant="subtitle2" color="primary">{f.name}</Typography>
                       </FlexColumn>
                       <PercentageSliderMoneyTextField name={`funds.${i}`} fund={f} />

@@ -14,7 +14,7 @@ const FundsTables = () => {
     allFundsLoading,
     recommendedFundsLoading,
     favoritesLoading,
-    postFundsLoading,
+    postInvestmentLoading,
   } = useFundsContext();
   return (
     <>
@@ -46,7 +46,7 @@ const FundsTables = () => {
           />
         </Flex>
       </TabContainer>
-      <LoadingModal open={postFundsLoading} />
+      <LoadingModal open={postInvestmentLoading} />
     </>
   );
 };

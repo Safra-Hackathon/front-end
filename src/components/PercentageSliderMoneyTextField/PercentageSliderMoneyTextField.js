@@ -18,7 +18,7 @@ const PercentageSliderMoneyTextField = ({ name, fund }) => {
       .map((f, i) => ({ ...f, index: i }))
       .filter((f, i) => i !== parseInt(index, 10));
 
-    setFieldValue(`${n1}.${index}.amount`, (change / 100) * values.payback);
+    setFieldValue(`${n1}.${index}.amount`, (change / 100) * values.available);
 
     const total = fundsCopy.reduce((t, f) => f.percentage + t, parseInt(change, 10));
     if (total - 100 > 0) {
@@ -26,17 +26,17 @@ const PercentageSliderMoneyTextField = ({ name, fund }) => {
         const newValue = f.percentage * ((100 - change) / (total - change));
         const fundName = `${n1}.${f.index}`;
         setFieldValue(`${fundName}.percentage`, newValue);
-        setFieldValue(`${fundName}.amount`, (newValue / 100) * values.payback);
+        setFieldValue(`${fundName}.amount`, (newValue / 100) * values.available);
       });
     }
   };
 
   const handleMoneyChange = (event) => {
     const { value } = event.target;
-    const newValue = value > values.payback ? values.payback : value < 0 ? 0 : value;
-    setFieldValue(`${name}.percentage`, (newValue / values.payback) * 100);
+    const newValue = value > values.available ? values.available : value < 0 ? 0 : value;
+    setFieldValue(`${name}.percentage`, (newValue / values.available) * 100);
     setFieldValue(`${name}.amount`, newValue);
-    updateSliderOnChange((newValue / values.payback) * 100);
+    updateSliderOnChange((newValue / values.available) * 100);
   };
 
   return (
@@ -44,7 +44,7 @@ const PercentageSliderMoneyTextField = ({ name, fund }) => {
       <FlexColumn noPadding sm="30%" all="80%">
         <PercentageSlider name={`${name}.percentage`} onChangeCommitted={updateSliderOnChange} valueLabelDisplay="auto" />
       </FlexColumn>
-      <FlexColumn sm="70%" all="20%" styles={{ marginBottom: isMobile ? '-20px' : '-10px' }}>
+      <FlexColumn sm="70%" all="20%" marginBottom={isMobile ? '-20px' : '-10px'}>
         <MoneyTextField
           fullWidth
           name={`${name}.amount`}
@@ -55,7 +55,7 @@ const PercentageSliderMoneyTextField = ({ name, fund }) => {
           customOnChange={handleMoneyChange}
           // customOnBlur={handleMoneyChange}
         />
-        <MinInvestmentLabel ltMin={(fund.percentage / 100) * values.payback < fund.min}>
+        <MinInvestmentLabel ltMin={(fund.percentage / 100) * values.available < fund.min}>
           Min:
           {toMoney(fund.min)}
         </MinInvestmentLabel>

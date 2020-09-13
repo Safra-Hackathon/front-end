@@ -8,3 +8,11 @@ export const investmentInitialValues = (investment = {}) => ({
   percentage: investment.percentage ? parseFloat(investment.percentage) : 0,
   amount: investment.amount ? parseFloat(investment.amount) : 0,
 });
+
+export const investmentsInitialValues = (investments = {}) => ({
+  available: investments.available ? parseFloat(investments.available) : 0,
+  funds: investments.investments ? investments.investments
+    .map((f) => investmentInitialValues(f))
+    .filter((f) => f.min <= parseFloat(investments.available))
+    : [],
+});
