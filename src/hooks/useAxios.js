@@ -1,22 +1,10 @@
 import { useEffect } from 'react';
-import { makeUseAxios } from 'axios-hooks';
-import axios from 'axios';
+import defaultUseAxios from 'axios-hooks';
 import { useHistory } from 'react-router-dom';
 import useJwtAuth from '@gabrielgvl/jwt_auth_react';
 import useNotistack from './useNotistack';
 import { LOGIN } from '../routes/pathNames';
 import useCache from '../store/cache';
-import { link } from '../requests/util';
-
-const useAxiosHook = makeUseAxios({
-  axios: axios.create({
-    baseURL: `${link}`,
-    // headers: { 'Cache-Control': 'no-cache' },
-    // adapter: cacheAdapterEnhancer(axios.defaults.adapter, {
-    //   enabledByDefault: false,
-    // }),
-  }),
-});
 
 /**
  * Hook para fazer requests com axios
@@ -42,7 +30,7 @@ const useAxios = (
   const { token, isLoggedIn, logOut } = useJwtAuth();
   const [{
     response, error, data, loading,
-  }, execute] = useAxiosHook(
+  }, execute] = defaultUseAxios(
     {
       headers: { Authorization: `Bearer ${token}` },
       url,

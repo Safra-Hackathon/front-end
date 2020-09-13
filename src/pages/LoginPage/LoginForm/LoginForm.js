@@ -12,6 +12,8 @@ import useJwtAuth from '@gabrielgvl/jwt_auth_react';
 import { Form } from './styles';
 import { useLogin } from '../../../requests/auth';
 import FormikTextField from '../../../components/FormikTextField';
+// import { useSafraAuth } from '../../../requests/safraAPI';
+import useApiToken from '../../../store/api';
 
 const validationSchema = Yup.object().shape({
   email: Yup.string()
@@ -23,6 +25,8 @@ const validationSchema = Yup.object().shape({
 
 const LoginForm = () => {
   const { handleLogin } = useJwtAuth();
+  const { setAccountId } = useApiToken();
+  // const auth = useSafraAuth();
   const [, login] = useLogin();
 
   useEffect(() => {
@@ -38,11 +42,14 @@ const LoginForm = () => {
       onSubmit={async ({ email, password }, { setSubmitting }) => {
         try {
           const { data } = await login({ data: { email, password } });
-          const { token } = data;
+          const { token, data: userInfo } = data;
           if (token) {
-            await handleLogin(token);
+            // const { access_token } = await auth();
+            setAccountId(userInfo.account_id);
+            handleLogin(token);
           }
         } catch (e) {
+          console.log(e);
           setSubmitting(false);
         }
       }}
