@@ -30,7 +30,7 @@ const FundsTables = () => {
       <TabContainer value="recommended">
         <Flex justifyBetween fullWidth className="section">
           <FundsDataTable
-            rows={recommendedFundsData ? [recommendedFundsData] : []}
+            rows={recommendedFundsData && recommendedFundsData.name ? [recommendedFundsData] : []}
             loading={recommendedFundsLoading}
             onAction={handlePostInvestment}
           />

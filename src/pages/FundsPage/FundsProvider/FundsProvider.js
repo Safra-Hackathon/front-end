@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useGetFunds, useGetRecommendedFunds } from '../../../requests/funds';
 import { useGetInvestment, usePostInvestment } from '../../../requests/investments';
 import { investmentInitialValues } from '../../../validation/investment';
+import { useGetPayback } from '../../../requests/payback';
 
 const FundsContext = React.createContext();
 
@@ -11,6 +12,7 @@ const FundsProvider = ({ children }) => {
   const [currentBalance, setCurrentBalance] = useState(0);
   const [{ data: allFundsData, loading: allFundsLoading }] = useGetFunds();
   const [{ data: favoritesData, loading: favoritesLoading }] = useGetInvestment(currentBalance);
+  const [{ data: paybackData }] = useGetPayback();
   const [{
     data: recommendedFundsData,
     loading: recommendedFundsLoading,
@@ -36,17 +38,17 @@ const FundsProvider = ({ children }) => {
 
   useEffect(() => {
     const fetchRecommended = async () => {
-      if (favoritesData) {
+      if (paybackData) {
         try {
-          const { balance } = favoritesData;
-          setCurrentBalance(1000);
+          const { total } = paybackData;
+          setCurrentBalance(total);
         } catch (e) {
           console.log(e);
         }
       }
     };
     fetchRecommended();
-  }, [favoritesData]);
+  }, [paybackData]);
 
   const initialContext = {
     allFundsData,

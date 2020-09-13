@@ -41,6 +41,7 @@ const PaybackProvider = ({ children }) => {
     chartData,
     investmentsData,
     investmentsLoading,
+    postInvestmentLoading,
     chartLoading,
     postPayback,
     postInvestment,
