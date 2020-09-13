@@ -84,9 +84,11 @@ const PaybackChart = () => {
                   locale: ptBR,
                 },
               },
-              time: {
+              ticks: {
                 min: startDate,
                 max: endDate,
+              },
+              time: {
                 round: true,
                 unit: 'month',
                 tooltipFormat: 'dd/MM/yyyy',

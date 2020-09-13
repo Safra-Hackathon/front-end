@@ -6,7 +6,7 @@ import {
 
 import Flex from 'components/Flex';
 
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { NotificationHeader, NotificationTitle, Root } from './styles';
 import Notification from './Notification';
 

@@ -13,7 +13,8 @@ const PaybackProvider = ({ children }) => {
   const [, postPayback] = usePostPayback();
   const [startDate, setStartDate] = useState(formatDateQuery(subMonths(new Date(), 2)));
   const [endDate, setEndDate] = useState(formatDateQuery(addMonths(new Date(), 2)));
-  const [{ data: chartData, loading: chartLoading }, refetchChart] = useGetPaybackHistoryChart(startDate, endDate);
+  const [{ data: chartData, loading: chartLoading },
+    refetchChart] = useGetPaybackHistoryChart(startDate, endDate);
   const [isModalFundsOpen, setModalFundsOpen] = useState(false);
   const [isModalHelperOpen, setModalHelperOpen] = useState(false);
 

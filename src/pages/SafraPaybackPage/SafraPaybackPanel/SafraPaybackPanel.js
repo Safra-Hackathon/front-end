@@ -23,9 +23,7 @@ import { usePaybackContext } from '../PaybackProvider/PaybackProvider';
 
 const SafraPaybackPanel = () => {
   const {
-    setModalFundsOpen, post, paybackData,
-    setModalHelperOpen, paybackLoading,
-    isModalFundsOpen, isModalHelperOpen,
+    setModalFundsOpen, post, paybackData, setModalHelperOpen,
   } = usePaybackContext();
   const isMobile = useMobile();
 

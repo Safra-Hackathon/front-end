@@ -6,7 +6,6 @@ import { JwtAuthProvider } from '@gabrielgvl/jwt_auth_react';
 import { Provider } from 'react-redux';
 import store from 'store';
 import StylesProvider from '@material-ui/styles/StylesProvider';
-import { Auth0Provider } from '@auth0/auth0-react';
 import theme from './styles/muiTheme';
 import GlobalStyle from './styles/global';
 import { IndexRoutes } from './routes';
