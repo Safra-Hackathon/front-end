@@ -11,7 +11,7 @@ import ChallengesList from '../../../../components/ChallengesList';
 const ChallengeCard = () => (
   <Card autoHeight color={primary}>
     <CardTitle flex>
-      Desafios
+      Conquistas
       {/* <IconInfo> */}
       <EqualizerOutlinedIcon />
       {/* </IconInfo> */}

@@ -3,6 +3,7 @@ import { Container, Flex, FlexColumn } from '../../components/Flex/Flex';
 import WalletCard from './Cards/WalletCard';
 import TransactionCard from './Cards/TransactionCard';
 import ChallengeCard from './Cards/ChallengeCard';
+import FundsCard from './Cards/FundsCard';
 
 const DashboardPage = () => (
   <Container>
@@ -13,12 +14,15 @@ const DashboardPage = () => (
           <WalletCard />
         </FlexColumn>
         <FlexColumn all="100%">
-          <ChallengeCard />
+          <FundsCard />
         </FlexColumn>
       </FlexColumn>
       <FlexColumn noPadding sm="100%" all="50%">
         <FlexColumn all="100%">
           <TransactionCard />
+        </FlexColumn>
+        <FlexColumn all="100%">
+          <ChallengeCard />
         </FlexColumn>
       </FlexColumn>
     </Flex>

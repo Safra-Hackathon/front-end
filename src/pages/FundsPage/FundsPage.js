@@ -1,5 +1,5 @@
 import React from 'react';
-import FundsTables from '../../components/FundsTable';
+import FundsTables from '../../components/FundsTables';
 
 const rows = [
   {
