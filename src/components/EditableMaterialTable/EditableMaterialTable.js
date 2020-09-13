@@ -1,13 +1,10 @@
 import MaterialTable from 'material-table';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import * as MaterialTableLocale from '../../locale/MaterialTableLocale';
 import { TableContainer } from './styles';
 
 const EditableMaterialTable = ({
-  rows, options, fixedHeight,
-  handleOpenModal, handleOpenHistoricModal, handleOpenDeleteModal,
-  isEditable, canShowAll, setData, canAdd, canEdit, canDelete, hasHistory,
-  actions, ...props
+  rows, options, actions, ...props
 }) => (
   <TableContainer>
     <MaterialTable
