@@ -10,8 +10,8 @@ const FundsChart = ({ funds }) => {
 
   useEffect(() => {
     setDataset([{
-      backgroundColor: 'rgba(255,0,0,0.4)',
-      borderColor: 'rgba(255,0,0,0.4)',
+      backgroundColor: 'rgb(53,69,130, 0.8)',
+      borderColor: 'rgb(53,69,130, 0.8)',
       data: funds.map((f) => f.percentage),
     }]);
   }, [funds]);

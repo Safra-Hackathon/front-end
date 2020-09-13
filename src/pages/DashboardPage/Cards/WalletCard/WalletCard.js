@@ -21,9 +21,6 @@ const WalletCard = () => (
     <Flex fullWidth alignBaseline>
       <FlexColumn all="50%">
         <Flex>
-          <CardText>Conta</CardText>
-        </Flex>
-        <Flex>
           <CardText>Payback</CardText>
         </Flex>
         <Flex>
@@ -31,9 +28,6 @@ const WalletCard = () => (
         </Flex>
       </FlexColumn>
       <FlexColumn all="50%">
-        <Flex>
-          <CardText isValue>R$2000,00</CardText>
-        </Flex>
         <Flex>
           <CardText isValue>R$5000,00</CardText>
         </Flex>
