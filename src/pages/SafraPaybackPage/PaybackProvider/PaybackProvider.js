@@ -10,11 +10,11 @@ const PaybackContext = React.createContext();
 export const usePaybackContext = () => useContext(PaybackContext);
 
 const PaybackProvider = ({ children }) => {
-  const [endDate, setEndDate] = useState(formatDateQuery(addMonths(new Date(), 2)));
+  const [endDate, setEndDate] = useState(formatDateQuery(addMonths(new Date(), 6)));
   const [{ data: paybackData, loading: paybackLoading }] = useGetPayback();
 
   const [, postPayback] = usePostPayback();
-  const [startDate, setStartDate] = useState(formatDateQuery(subMonths(new Date(), 2)));
+  const [startDate, setStartDate] = useState(formatDateQuery(subMonths(new Date(), 6)));
   const [{ data: investmentsData, loading: investmentsLoading }] = useGetInvestment();
   const [{ loading: postInvestmentLoading }, postInvestment] = usePostInvestment();
   const [{ data: chartData, loading: chartLoading },

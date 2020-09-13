@@ -9,22 +9,22 @@ import Loading from '../Loading';
 import { usePaybackContext } from '../../pages/SafraPaybackPage/PaybackProvider/PaybackProvider';
 import { toMoney } from '../../utils/string';
 
-const generateDataset = (n) => {
-  const data = [];
-  let date = new Date();
-  for (let i = 0; i < n; i++) {
-    data.push({ x: date, y: Math.random() * 1000 + i * 500 * Math.random() });
-    date = addMonths(date, 1);
-  }
-  return data;
-};
-
 const PaybackChart = () => {
   const {
     chartData, chartLoading, paybackLoading, startDate,
-    endDate,
+    endDate, paybackData,
   } = usePaybackContext();
   const { render, isMobile } = useChartResponsiveUtils();
+
+  const genDataset = (feature) => {
+    if (!chartData[feature]) return [];
+    return chartData[feature].map((h) => {
+      const [k, v] = Object.entries(h)[0];
+      const [year, month, day] = k.split('-');
+      return ({ x: new Date(year, month, day), y: v });
+    });
+  };
+
   const getDataset = () => [
     {
       // fill: false,
@@ -32,11 +32,7 @@ const PaybackChart = () => {
       borderColor: 'rgb(218,191,113)',
       borderWidth: 2,
       label: 'Histórico',
-      data: chartData.historico.map((h) => {
-        const [k, v] = Object.entries(h)[0];
-        const [year, month, day] = k.split('-');
-        return ({ x: new Date(year, month, day), y: v });
-      }),
+      data: genDataset('historico'),
     },
     {
       fill: false,
@@ -45,7 +41,7 @@ const PaybackChart = () => {
       borderWidth: 5,
       borderDash: [5],
       label: 'Planejado',
-      data: generateDataset(10),
+      data: [{ x: startDate, y: paybackData.goal }, { x: endDate, y: paybackData.goal }],
     },
     {
       // fill: false,
@@ -53,11 +49,11 @@ const PaybackChart = () => {
       borderColor: 'rgb(37,46,91)',
       borderWidth: 2,
       label: 'Projeção',
-      data: generateDataset(10),
+      data: genDataset('projetado'),
     },
   ];
 
-  if (!render || chartLoading || paybackLoading || !chartData) {
+  if (!render || chartLoading || paybackLoading || !chartData || !paybackData) {
     return <Loading />;
   }
 
@@ -105,7 +101,8 @@ const PaybackChart = () => {
             }],
             yAxes: [{
               ticks: {
-                stepSize: 1000,
+                stepSize: 500,
+                suggestedMax: paybackData.goal * 1.1,
               },
             }],
           },

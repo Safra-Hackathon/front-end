@@ -50,7 +50,7 @@ const DateTimeFilterField = () => {
               margin="normal"
               format={getTimeFormat(startDate, endDate)}
               value={endDate}
-              onChange={(value) => handleEndDateChange(value)}
+              onChange={async (value) => handleEndDateChange(value)}
               disabled={loading}
             />
           </FlexColumn>

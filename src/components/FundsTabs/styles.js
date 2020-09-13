@@ -2,5 +2,6 @@ import styled from 'styled-components';
 import { TabPanel } from '@material-ui/lab';
 
 export const TabContainer = styled(TabPanel)`
-    width: 100%
+    width: 100%;
+    padding: 0;
 `;

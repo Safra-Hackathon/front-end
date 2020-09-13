@@ -24,7 +24,7 @@ const FundsChart = ({ funds }) => {
   }
 
   if (funds.length < 3) {
-    return <Typography variant="h6">Adicione mais investimentos para visualizar o gráfico de investimentos!</Typography>;
+    return <Typography variant="h6">Adicione investimentos para visualizar o gráfico!</Typography>;
   }
 
   return (

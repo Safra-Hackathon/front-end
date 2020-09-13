@@ -18,7 +18,7 @@ import ButtonModalProgress from '../../../components/ButtonModalProgress';
 
 const FundsModal = () => {
   const {
-    handleCloseModalFunds, isModalFundsOpen, investmentsData, investmentsLoading, postInvestment,
+    handleCloseModalFunds, isModalFundsOpen, investmentsData, investmentsLoading, postInvestment, paybackData,
   } = usePaybackContext();
   const modalActions = (isSubmitting, handleSubmit) => (
     <Flex justifyBetween fullWidth>
@@ -34,7 +34,7 @@ const FundsModal = () => {
     </Flex>
   );
 
-  if (!investmentsData || investmentsLoading) return <></>;
+  if (!investmentsData || investmentsLoading || !paybackData) return <></>;
 
   return (
     <Formik
@@ -59,9 +59,9 @@ const FundsModal = () => {
       }}
       enableReinitialize
       initialValues={{
-        payback: 5000,
-        funds: investmentsData.investments
-          .map((f) => investmentInitialValues(f)).filter((f) => f.min <= 5000),
+        payback: parseFloat(paybackData.total),
+        funds: investmentsData.investments ? investmentsData.investments
+          .map((f) => investmentInitialValues(f)).filter((f) => f.min <= paybackData.total) : [],
       }}
     >
       {({ values, isSubmitting, handleSubmit }) => (

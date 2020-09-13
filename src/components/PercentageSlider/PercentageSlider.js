@@ -40,7 +40,7 @@ const PercentageSlider = ({ name, onChangeCommitted, ...props }) => {
             setFieldValue(name, newValue);
             if (onChangeCommitted) onChangeCommitted(newValue);
           }}
-          inputProps={{ max: 100, min: 0 }}
+          inputProps={{ max: 100, min: 0, step: 'any' }}
         />
       </FlexColumn>
       {!isMobile && (
