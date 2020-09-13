@@ -20,7 +20,7 @@ const HelperModal = () => {
       title="Sobre o Payback"
       actions={actions()}
     >
-      O payback eh uma maneira para voce guardar dinheiro a cada transacao!
+      O Payback é uma maneira de você guardar dinheiro para investimento a cada transação recebida!
     </Modal>
   );
 };
