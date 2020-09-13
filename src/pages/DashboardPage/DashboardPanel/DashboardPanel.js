@@ -9,7 +9,7 @@ const DashboardPanel = () => {
   const isMobile = useMobile();
   return (
     <Container>
-      <h1 className="page-title p-page-title">Olá, João</h1>
+      <h1 className="page-title p-page-title mt-2">Olá, João</h1>
       <Flex fullWidth justifyBetween>
         <FlexColumn noPadding sm="100%" all="50%">
           <FlexColumn noPadding={isMobile} all="100%">
