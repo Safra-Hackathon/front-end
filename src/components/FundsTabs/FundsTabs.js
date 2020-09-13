@@ -29,12 +29,12 @@ const FundsTabs = ({ rows }) => {
       </TabContainer>
       <TabContainer value="recommended">
         <Flex justifyBetween fullWidth className="section">
-          <FundsDataTable rows={rows} isRecommended selection />
+          <FundsDataTable rows={rows.filter((r) => r.recommended)} isRecommended selection />
         </Flex>
       </TabContainer>
       <TabContainer value="payback">
         <Flex justifyBetween fullWidth className="section">
-          <FundsDataTable rows={rows} isFavorite selection />
+          <FundsDataTable rows={rows.filter((r) => r.favorite)} isFavorite selection />
         </Flex>
       </TabContainer>
     </TabContext>

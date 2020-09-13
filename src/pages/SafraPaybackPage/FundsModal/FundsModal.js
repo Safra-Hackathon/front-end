@@ -80,6 +80,9 @@ const FundsModal = () => {
             </Flex>
             <CardDivider />
             <Flex alignCenter justifyBetween fullWidth className="mt-4">
+              <Flex fullWidth justifyCenter>
+                <FundsChart funds={values.funds} />
+              </Flex>
               <Flex fullWidth justifyBetween alignCenter>
                 {values.funds.map((f, i) => (
                   <Flex key={i} fullWidth alignCenter>
@@ -89,9 +92,6 @@ const FundsModal = () => {
                     <PercentageSliderMoneyTextField name={`funds.${i}`} fund={f} />
                   </Flex>
                 ))}
-              </Flex>
-              <Flex fullWidth justifyCenter>
-                <FundsChart funds={values.funds} />
               </Flex>
             </Flex>
           </>
