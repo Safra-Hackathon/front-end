@@ -5,6 +5,7 @@ import Button from '@material-ui/core/Button';
 import Flex from 'components/Flex';
 
 import SafraLogo from 'assets/images/bancoSafraLogo.png';
+import { Emoji } from 'emoji-mart';
 import { Logo, TextPage } from './styles';
 
 const InDevelopment = withRouter(({ history }) => {
@@ -13,10 +14,11 @@ const InDevelopment = withRouter(({ history }) => {
   };
   return (
     <Flex
+      fullHeight
+      fullWidth
       justifyCenter
       alignCenter
       column
-      className="bg-primary"
     >
       <Logo src={SafraLogo} alt="Safra Logo" className="d-none-md" />
       <Logo
@@ -25,7 +27,12 @@ const InDevelopment = withRouter(({ history }) => {
         className="d-none-mobile"
         width="500px"
       />
-      <TextPage>Página não encontrada</TextPage>
+      <Emoji
+        emoji=":construction_worker::skin-tone-2:"
+        size={36}
+        set="twitter"
+      />
+      <TextPage>Em desenvolvimento!</TextPage>
       <Button
         variant="outlined"
         color="inherit"
