@@ -12,6 +12,7 @@ import useJwtAuth from '@gabrielgvl/jwt_auth_react';
 import { Form } from './styles';
 import { useLogin } from '../../../requests/auth';
 import FormikTextField from '../../../components/FormikTextField';
+import useNotistack from "../../../hooks/useNotistack";
 
 const validationSchema = Yup.object().shape({
   email: Yup.string()
@@ -22,6 +23,7 @@ const validationSchema = Yup.object().shape({
 });
 
 const LoginForm = () => {
+  const { successSnack, errorSnack } = useNotistack();
   const { handleLogin } = useJwtAuth();
   const [, login] = useLogin();
 
@@ -41,6 +43,9 @@ const LoginForm = () => {
           const { token } = data;
           if (token) {
             handleLogin(token);
+            successSnack('Seja Bem-Vindo!');
+          } else {
+            errorSnack('Autenticação inválida!');
           }
         } catch (e) {
           console.log(e);
